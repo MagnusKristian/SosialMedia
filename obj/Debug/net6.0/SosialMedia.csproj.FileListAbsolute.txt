@@ -1,0 +1,15 @@
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\bin\Debug\net6.0\SosialMedia.exe
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\bin\Debug\net6.0\SosialMedia.deps.json
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\bin\Debug\net6.0\SosialMedia.runtimeconfig.json
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\bin\Debug\net6.0\SosialMedia.dll
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\bin\Debug\net6.0\SosialMedia.pdb
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\obj\Debug\net6.0\SosialMedia.csproj.AssemblyReference.cache
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\obj\Debug\net6.0\SosialMedia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\obj\Debug\net6.0\SosialMedia.AssemblyInfoInputs.cache
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\obj\Debug\net6.0\SosialMedia.AssemblyInfo.cs
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\obj\Debug\net6.0\SosialMedia.csproj.CoreCompileInputs.cache
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\obj\Debug\net6.0\SosialMedia.dll
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\obj\Debug\net6.0\refint\SosialMedia.dll
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\obj\Debug\net6.0\SosialMedia.pdb
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\obj\Debug\net6.0\SosialMedia.genruntimeconfig.cache
+C:\Users\Magnus GetAcademy\Documents\GitHub\SosialMedia\obj\Debug\net6.0\ref\SosialMedia.dll
