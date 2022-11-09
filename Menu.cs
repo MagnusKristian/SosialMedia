@@ -23,7 +23,7 @@ public class Menu
                 case "2":
                     Console.WriteLine("2");
                     Console.WriteLine("Remove friend: ");
-                    userProfile.RemoveFriend(CheckForFriendInDatabase(allUserProfiles));
+                    userProfile.RemoveFriend(CheckForFriendInDatabase(allUserProfiles), userProfile);
                     break;
                 case "3":
                     Console.WriteLine("3");

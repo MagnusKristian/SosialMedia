@@ -27,15 +27,17 @@ public class Profile
         Console.WriteLine($"{Name} is now friends with {friendToAdd.Name}");
 
         //add the user to the friends list also
-        userAddingFriend.Friends.Add(this);
+        friendToAdd.Friends.Add(userAddingFriend);
 
     }
 
-    public void RemoveFriend(Profile friendToRemove)
+    public void RemoveFriend(Profile friendToRemove, Profile userAddingFriend)
     {
         if(friendToRemove == null){ Console.WriteLine("Error, user not found, try again!"); return;}
         Friends.Remove(friendToRemove);
         Console.WriteLine($"{Name} is no longer friends with {friendToRemove.Name}");
+        //Remove the user to the friends list also
+        friendToRemove.Friends.Remove(userAddingFriend);
     }
 
     public void DisplayFriends()
