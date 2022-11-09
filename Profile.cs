@@ -27,7 +27,7 @@ public class Profile
         Console.WriteLine($"{Name} is now friends with {friendToAdd.Name}");
 
         //add the user to the friends list also
-        Friends.Add(userAddingFriend);
+        userAddingFriend.Friends.Add(this);
 
     }
 
