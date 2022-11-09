@@ -18,13 +18,17 @@ public class Profile
         Console.WriteLine($"Welcome to FriendFace, {Name}!");
         Console.WriteLine();
     }
-    public void AddFriend(Profile friendToAdd)
+    public void AddFriend(Profile friendToAdd,Profile userAddingFriend)
     {
         if (friendToAdd == null) { Console.WriteLine("Error, user not found, try again!"); return; }
 
         if(Friends.Contains(friendToAdd)){ Console.WriteLine("Error, user is already a friend, try again!"); return;}
         Friends.Add(friendToAdd);
         Console.WriteLine($"{Name} is now friends with {friendToAdd.Name}");
+
+        //add the user to the friends list also
+        Friends.Add(userAddingFriend);
+
     }
 
     public void RemoveFriend(Profile friendToRemove)

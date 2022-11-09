@@ -28,7 +28,7 @@ public class FriendFace
 
         for (int i = 1; i < ListOfAllUsers.Count; i++)
         {
-            ListOfAllUsers[0].AddFriend(ListOfAllUsers[i]);
+            ListOfAllUsers[0].AddFriend(ListOfAllUsers[i],CurrentProfile);
         }
 
         Menu.MenuPrompt(CurrentProfile, ListOfAllUsers);

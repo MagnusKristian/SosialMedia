@@ -18,7 +18,7 @@ public class Menu
                 case "1":
                     Console.WriteLine("1");
                     Console.WriteLine("Add friend: ");
-                    userProfile.AddFriend(CheckForFriendInDatabase(allUserProfiles));
+                    userProfile.AddFriend(CheckForFriendInDatabase(allUserProfiles),userProfile);
                     break;
                 case "2":
                     Console.WriteLine("2");
