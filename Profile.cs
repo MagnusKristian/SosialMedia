@@ -21,6 +21,8 @@ public class Profile
     public void AddFriend(Profile friendToAdd)
     {
         if (friendToAdd == null) { Console.WriteLine("Error, user not found, try again!"); return; }
+
+        if(Friends.Contains(friendToAdd)){ Console.WriteLine("Error, user is already a friend, try again!"); return;}
         Friends.Add(friendToAdd);
         Console.WriteLine($"{Name} is now friends with {friendToAdd.Name}");
     }
