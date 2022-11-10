@@ -4,13 +4,15 @@ public class Profile
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
+    public string Password { get; set; }
     public string Address { get; set; }
     public string Description { get; set; }
     public List<Profile> Friends { get; set; }
 
-    public Profile(string name = "Unknown")
+    public Profile(string name = "Unknown", string password = "1234")
     {
         Name = name;
+        Password = password;
         Address = string.Empty;
         Description = $"Description for {Name}: \n";
         Friends = new List<Profile>();
@@ -66,7 +68,7 @@ public class Profile
         Console.WriteLine("*                  *");
         Console.WriteLine($"*{user.Description}");
         Console.WriteLine("*                  *");
-        Console.WriteLine($"*Friends:          *");
+        Console.WriteLine($"*{user.Name}'s Friends: ");
         foreach (var friend in user.Friends)
         {
             Console.WriteLine($"*{friend.Name} ");

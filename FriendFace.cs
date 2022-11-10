@@ -5,12 +5,15 @@ public class FriendFace
     List<Profile> ListOfAllUsers { get; set; }
     public Profile CurrentProfile { get; set; }
     public Menu Menu = new Menu();
+    public Login Login = new Login();
 
     public FriendFace()
     {
         ListOfAllUsers = new List<Profile>();
         
-        WelcomePrompt();
+        Login.login(this);
+
+        //WelcomePrompt();
 
         ListOfAllUsers.Add(new Profile("Magnus"));
         ListOfAllUsers.Add(new Profile("Marie"));
@@ -32,6 +35,11 @@ public class FriendFace
         }
 
         Menu.MenuPrompt(CurrentProfile, ListOfAllUsers);
+    }
+
+    private FriendFace SetCurrentUser()
+    {
+        throw new NotImplementedException();
     }
 
     public void WelcomePrompt()
