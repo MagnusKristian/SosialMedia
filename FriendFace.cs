@@ -2,7 +2,7 @@
 
 public class FriendFace
 {
-    List<Profile> ListOfAllUsers { get; set; }
+    public List<Profile> ListOfAllUsers { get; set; }
     public Profile CurrentProfile { get; set; }
     public Menu Menu = new Menu();
     public Login Login = new Login();
@@ -11,7 +11,7 @@ public class FriendFace
     {
         ListOfAllUsers = new List<Profile>();
         
-        Login.login(this);
+        //Login.login(this);
 
         //WelcomePrompt();
 
@@ -34,6 +34,12 @@ public class FriendFace
             ListOfAllUsers[0].AddFriend(ListOfAllUsers[i],CurrentProfile);
         }
 
+        Console.WriteLine();
+        Console.WriteLine("PROGRAM STARTED:THE ABOVE IS TEMPORARY AND SHOULD NOT BE SHOWN IN FINISHED PRODUCT.");
+        Console.WriteLine();
+
+        Login.login(this);
+
         Menu.MenuPrompt(CurrentProfile, ListOfAllUsers);
     }
 
@@ -46,8 +52,10 @@ public class FriendFace
     {
         Console.WriteLine("Welcome to friendFace! What is your name?");
         string userName = Console.ReadLine();
-        ListOfAllUsers.Add(new Profile(userName));
-        CurrentProfile = ListOfAllUsers[0];
+        Profile newProfile = new Profile(userName);
+        ListOfAllUsers.Add(newProfile);
+        //CurrentProfile = ListOfAllUsers[0];
+        SetCurrentUser(newProfile);
 
     }
 
