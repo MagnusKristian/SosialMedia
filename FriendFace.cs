@@ -9,6 +9,7 @@ public class FriendFace
 
     public FriendFace()
     {
+        //"database" for alle brukerene på friendface
         ListOfAllUsers = new List<Profile>();
         
         //Login.login(this);
@@ -29,6 +30,7 @@ public class FriendFace
         ListOfAllUsers.Add(new Profile("Erik"));
         ListOfAllUsers.Add(new Profile("Viktor"));
 
+        //legger til alle på friendface i vennelista til "magnus".
         for (int i = 1; i < ListOfAllUsers.Count; i++)
         {
             ListOfAllUsers[0].AddFriend(ListOfAllUsers[i],CurrentProfile);
