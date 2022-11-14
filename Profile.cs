@@ -14,13 +14,13 @@ public class Profile
         Name = name;
         Password = password;
         Address = string.Empty;
-        Description = $"Description for {Name}: \n";
+        Description = $"{Name}'s description: \n";
         Friends = new List<Profile>();
         Id = Guid.NewGuid();
         Console.WriteLine($"Welcome to FriendFace, {Name}!");
         Console.WriteLine();
     }
-    public void AddFriend(Profile friendToAdd,Profile userAddingFriend)
+    public void AddFriend(Profile friendToAdd,Profile userAddingFriend,FriendFace friendFace)
     {
         if (friendToAdd == null) { Console.WriteLine("Error, user not found, try again!"); return; }
 
@@ -30,17 +30,25 @@ public class Profile
 
         //add the user to the friends list also
         friendToAdd.Friends.Add(userAddingFriend);
-        Console.WriteLine($"{friendToAdd.Name} is now friends with {userAddingFriend.Name}");
+        Console.WriteLine($"{friendToAdd.Name} is now friends with {friendFace.GetCurrentUser().Name}");
 
     }
 
-    public void RemoveFriend(Profile friendToRemove, Profile userAddingFriend)
+    public void RemoveFriend(Profile friendToRemove, Profile userRemovingFriend)
     {
         if(friendToRemove == null){ Console.WriteLine("Error, user not found, try again!"); return;}
-        Friends.Remove(friendToRemove);
-        Console.WriteLine($"{Name} is no longer friends with {friendToRemove.Name}");
-        //Remove the user to the friends list also
-        friendToRemove.Friends.Remove(userAddingFriend);
+
+        if (Friends.Contains(friendToRemove))
+        {
+            Friends.Remove(friendToRemove);
+            Console.WriteLine($"{Name} is no longer friends with {friendToRemove.Name}");
+            //Remove the user from the friends list also
+            friendToRemove.Friends.Remove(userRemovingFriend);
+        }
+        else
+        {
+            Console.WriteLine($"Error. '{userRemovingFriend.Name}' is not currently friends with '{friendToRemove.Name}'");
+        }
     }
 
     public void DisplayFriends()
@@ -80,7 +88,7 @@ public class Profile
         }
         else
         {
-            Console.WriteLine($"{user.Name} does not have any friends:(");
+            Console.WriteLine($"*{user.Name} is friendless:(");
         }
         Console.WriteLine("*                  *");
         Console.WriteLine("*                  *");

@@ -3,7 +3,7 @@
 public class FriendFace
 {
     public List<Profile> ListOfAllUsers { get; set; }
-    public Profile CurrentProfile { get; set; }
+    public Profile? CurrentProfile { get; set; } = new Profile();
     public Menu Menu = new Menu();
     public Login Login = new Login();
 
@@ -11,11 +11,6 @@ public class FriendFace
     {
         //"database" for alle brukerene på friendface
         ListOfAllUsers = new List<Profile>();
-        
-        //Login.login(this);
-
-        //WelcomePrompt();
-
         ListOfAllUsers.Add(new Profile("Magnus"));
         ListOfAllUsers.Add(new Profile("Marie"));
         ListOfAllUsers.Add(new Profile("Terje"));
@@ -33,18 +28,23 @@ public class FriendFace
         //legger til alle på friendface i vennelista til "magnus".
         for (int i = 1; i < ListOfAllUsers.Count; i++)
         {
-            ListOfAllUsers[0].AddFriend(ListOfAllUsers[i], ListOfAllUsers[0]);
+            ListOfAllUsers[0].AddFriend(ListOfAllUsers[i], ListOfAllUsers[0],this);
         }
-
-        Console.WriteLine();
-        Console.WriteLine("PROGRAM STARTED:THE ABOVE IS TEMPORARY AND SHOULD NOT BE SHOWN IN FINISHED PRODUCT.");
-        Console.WriteLine();
+        Console.WriteLine("\nPROGRAM STARTED:THE ABOVE IS TEMPORARY AND SHOULD NOT BE SHOWN IN FINISHED PRODUCT.\n");
 
         Login.login(this);
 
-        Menu.MenuPrompt(CurrentProfile, ListOfAllUsers);
+        Menu.MenuPrompt(CurrentProfile, ListOfAllUsers,this);
     }
 
+    public List<Profile> GetAllUsers()
+    {
+        return this.ListOfAllUsers;
+    }
+    public Profile GetCurrentUser()
+    {
+        return this.CurrentProfile;
+    }
     private FriendFace SetCurrentUser()
     {
         throw new NotImplementedException();

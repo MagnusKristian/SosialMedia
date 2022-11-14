@@ -51,7 +51,8 @@ public class Login
                             {
                                 passOk = true;
                                 Console.WriteLine("Correct password");
-                                Console.WriteLine($"welcome back!");
+                                friendFace.SetCurrentUser(chosenUser);
+                                Console.WriteLine($"welcome back, {chosenUser.Name}!");
                             }
                         }
                     }
