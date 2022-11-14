@@ -4,8 +4,8 @@ public class Menu
 {
     public void MenuPrompt(/*Profile userProfile, List<Profile> allUserProfiles, */FriendFace friendFace)
     {
-        Profile curUser = friendFace.GetCurrentUser();
-        List<Profile> allUsers = friendFace.GetAllUsers();
+        //Profile curUser = friendFace.GetCurrentUser();
+        //List<Profile> allUsers = friendFace.GetAllUsers();
 
         while (true)
         {
@@ -15,6 +15,10 @@ public class Menu
             Console.WriteLine("3. View all your friends: ");
             Console.WriteLine("4. Choose a friend and view their profile: ");
             Console.WriteLine("5. Sign out: ");
+            Console.WriteLine("6. Debug show current user: ");
+            Console.WriteLine("7. Debug show all users: ");
+
+
             Console.WriteLine("----------");
             string userChoice = Console.ReadLine();
             switch (userChoice)
@@ -58,6 +62,9 @@ public class Menu
                     Console.WriteLine($"CURRENT USER IS: {friendFace.GetCurrentUser().Name}");
                     Console.ReadLine();
                     
+                    break;
+                case "7":
+                    friendFace.ShowAllUsers();
                     break;
                 default:
                     break;

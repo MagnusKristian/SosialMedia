@@ -4,6 +4,9 @@ public class Profile
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
+    public string UserName { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
     public string Password { get; set; }
     public string Address { get; set; }
     public string Description { get; set; }
@@ -20,6 +23,25 @@ public class Profile
         Console.WriteLine($"Welcome to FriendFace, {Name}!");
         Console.WriteLine();
     }
+
+    public Profile(Profile profile)
+    {
+        Name = profile.Name;
+        Password = profile.Password;
+        Address = string.Empty;
+        Description = $"{Name}'s description: \n";
+        Friends = new List<Profile>();
+        Id = Guid.NewGuid();
+        Console.WriteLine($"Welcome to FriendFace, {Name}-PROFILE!");
+        Console.WriteLine();
+
+    }
+
+    public void SetPassword(string newPassword)
+    {
+        Password = newPassword;
+    }
+
     public void AddFriend(Profile friendToAdd,FriendFace friendFace)
     {
         if (friendToAdd == null) { Console.WriteLine("Error, user not found, try again!"); return; }

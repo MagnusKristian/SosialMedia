@@ -6,6 +6,8 @@ public class FriendFace
     public Profile? CurrentProfile { get; set; } = new Profile("ERROR-USER-SHOULDNT SHOW UP/fix later");
     public Menu Menu = new Menu();
     public Login Login = new Login();
+    SignUp signup = new SignUp();
+
 
     public FriendFace()
     {
@@ -46,13 +48,23 @@ public class FriendFace
         return this.CurrentProfile;
     }
 
+    public void ShowAllUsers()
+    {
+        for (int i = 0; i < ListOfAllUsers.Count; i++)
+        {
+            Console.WriteLine($"Name: {ListOfAllUsers[i].Name}");
+        }
+    }
     public void WelcomePrompt()
     {
-        Console.WriteLine("Welcome to friendFace! What is your name?");
-        string userName = Console.ReadLine();
-        Profile newProfile = new Profile(userName);
+        //signup.signUp();
+
+        //Console.WriteLine("Welcome to friendFace! What is your name?");
+        //string userName = Console.ReadLine();
+        Profile newProfile = new Profile(signup.signUp(this));
         ListOfAllUsers.Add(newProfile);
-        //CurrentProfile = ListOfAllUsers[0];
+        //ListOfAllUsers.Add(new Profile(userName));
+        
         SetCurrentUser(newProfile);
 
     }
