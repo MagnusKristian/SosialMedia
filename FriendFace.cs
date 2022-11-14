@@ -33,7 +33,7 @@ public class FriendFace
         //legger til alle på friendface i vennelista til "magnus".
         for (int i = 1; i < ListOfAllUsers.Count; i++)
         {
-            ListOfAllUsers[0].AddFriend(ListOfAllUsers[i],CurrentProfile);
+            ListOfAllUsers[0].AddFriend(ListOfAllUsers[i], ListOfAllUsers[0]);
         }
 
         Console.WriteLine();

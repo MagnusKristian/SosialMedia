@@ -45,22 +45,35 @@ public class Menu
     public Profile CheckForFriendInDatabase(List<Profile> allUserProfiles)
     {
         Profile ChosenFriend = null;
-        Console.WriteLine("Type in the name here: ");
-        string friendName = Console.ReadLine();
-        foreach (var profile in allUserProfiles)
+        while (ChosenFriend == null)
         {
-            if (profile.Name.ToLower() == friendName.ToLower())
+            Console.WriteLine("Type in the name here: ");
+            string friendName = Console.ReadLine();
+            foreach (var profile in allUserProfiles)
             {
-                ChosenFriend = profile;
+               if (profile.Name.ToLower() == friendName.ToLower())
+               {
+                   ChosenFriend = profile;
+               }
             }
-            //else
-            //{
-            //    Console.WriteLine("Error, try again.");
-            //    return new Profile("ERROR-BRUKER.");
-            //    //HER MÅ DET FIKSES I TILFELLE BRUKER IKKE FINNES.
-            //}
-            
+            if (ChosenFriend == null)
+            {
+                Console.WriteLine("Could not find user, try again...");
+            }
         }
+
+        //while (ChosenFriend == null)
+        //{
+        //    Console.WriteLine("Could not find user, try again...");
+        //    friendName = Console.ReadLine();
+        //    foreach (var profile in allUserProfiles)
+        //    {
+        //        if (profile.Name.ToLower() == friendName.ToLower())
+        //        {
+        //            ChosenFriend = profile;
+        //        }
+        //    }
+        //}
         //userProfile.AddFriend(ChosenFriend);
         return ChosenFriend;
     }

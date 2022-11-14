@@ -30,6 +30,7 @@ public class Profile
 
         //add the user to the friends list also
         friendToAdd.Friends.Add(userAddingFriend);
+        Console.WriteLine($"{friendToAdd.Name} is now friends with {userAddingFriend.Name}");
 
     }
 
@@ -69,10 +70,17 @@ public class Profile
         Console.WriteLine($"*{user.Description}");
         Console.WriteLine("*                  *");
         Console.WriteLine($"*{user.Name}'s Friends: ");
-        foreach (var friend in user.Friends)
+        if (user.Friends.Count>=1)
         {
+            foreach (Profile friend in user.Friends)
+            {
             Console.WriteLine($"*{friend.Name} ");
             Console.WriteLine("*                  *");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"{user.Name} does not have any friends:(");
         }
         Console.WriteLine("*                  *");
         Console.WriteLine("*                  *");
