@@ -20,7 +20,7 @@ public class Profile
         Console.WriteLine($"Welcome to FriendFace, {Name}!");
         Console.WriteLine();
     }
-    public void AddFriend(Profile friendToAdd,Profile userAddingFriend,FriendFace friendFace)
+    public void AddFriend(Profile friendToAdd,FriendFace friendFace)
     {
         if (friendToAdd == null) { Console.WriteLine("Error, user not found, try again!"); return; }
 
@@ -29,8 +29,11 @@ public class Profile
         Console.WriteLine($"{Name} is now friends with {friendToAdd.Name}");
 
         //add the user to the friends list also
-        friendToAdd.Friends.Add(userAddingFriend);
-        Console.WriteLine($"{friendToAdd.Name} is now friends with {friendFace.GetCurrentUser().Name}");
+        //friendToAdd.AddFriend(friendFace.GetCurrentUser(), friendFace);
+
+        friendToAdd.Friends.Add(this);
+        //friendToAdd.Friends.Add(friendFace.GetCurrentUser());
+        Console.WriteLine($"{friendToAdd.Name} is now friends with {Name}");
 
     }
 

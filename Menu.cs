@@ -2,10 +2,10 @@
 
 public class Menu
 {
-    public void MenuPrompt(Profile userProfile, List<Profile> allUserProfiles, FriendFace friendFace)
+    public void MenuPrompt(/*Profile userProfile, List<Profile> allUserProfiles, */FriendFace friendFace)
     {
-        //Profile curUser = friendFace.GetCurrentUser();
-        //List<Profile> allUsers = friendFace.GetAllUsers();
+        Profile curUser = friendFace.GetCurrentUser();
+        List<Profile> allUsers = friendFace.GetAllUsers();
 
         while (true)
         {
@@ -23,26 +23,26 @@ public class Menu
                     Console.Clear();
                     Console.WriteLine("1");
                     Console.WriteLine("Add friend: ");
-                    userProfile.AddFriend(CheckForFriendInDatabase(allUserProfiles),userProfile,friendFace);
+                    friendFace.GetCurrentUser().AddFriend(CheckForFriendInDatabase(friendFace.GetAllUsers()),friendFace);
                     break;
                 case "2":
                     Console.Clear();
                     Console.WriteLine("2");
                     Console.WriteLine("Remove friend: ");
-                    userProfile.RemoveFriend(CheckForFriendInDatabase(allUserProfiles), userProfile);
+                    friendFace.GetCurrentUser().RemoveFriend(CheckForFriendInDatabase(friendFace.GetAllUsers()), friendFace.GetCurrentUser());
                     break;
                 case "3":
                     Console.Clear();
                     Console.WriteLine("3");
                     Console.WriteLine("View all your friends: ");
-                    userProfile.DisplayFriends();
+                    friendFace.GetCurrentUser().DisplayFriends();
                     break;
                 case "4":
                     Console.Clear();
                     Console.WriteLine("4");
                     Console.WriteLine("Choose a friend and view their profile: ");
 
-                    userProfile.ShowProfile(CheckForFriendInDatabase(allUserProfiles));
+                    friendFace.GetCurrentUser().ShowProfile(CheckForFriendInDatabase(friendFace.GetAllUsers()));
                     break;
                 case "5":
                     Console.Clear();
@@ -50,6 +50,14 @@ public class Menu
                     Console.WriteLine("Sign out");
 
                     SignOut(friendFace);
+                    break;
+                case "6":
+                    Console.Clear();
+                    Console.WriteLine("6");
+                    Console.WriteLine("CURRENT FUCKING USER");
+                    Console.WriteLine($"CURRENT USER IS: {friendFace.GetCurrentUser().Name}");
+                    Console.ReadLine();
+                    
                     break;
                 default:
                     break;
@@ -66,7 +74,7 @@ public class Menu
             if (yesOrNo == "1")
             {
                 Console.WriteLine("Signing out now...");
-                friendFace.CurrentProfile = null;
+                friendFace.CurrentProfile = new Profile("Error-user-Sign-out");
                 friendFace.Login.login(friendFace);
                 return;
             }

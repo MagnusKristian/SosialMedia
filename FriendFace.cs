@@ -3,7 +3,7 @@
 public class FriendFace
 {
     public List<Profile> ListOfAllUsers { get; set; }
-    public Profile? CurrentProfile { get; set; } = new Profile();
+    public Profile? CurrentProfile { get; set; } = new Profile("ERROR-USER-SHOULDNT SHOW UP/fix later");
     public Menu Menu = new Menu();
     public Login Login = new Login();
 
@@ -28,13 +28,13 @@ public class FriendFace
         //legger til alle på friendface i vennelista til "magnus".
         for (int i = 1; i < ListOfAllUsers.Count; i++)
         {
-            ListOfAllUsers[0].AddFriend(ListOfAllUsers[i], ListOfAllUsers[0],this);
+            ListOfAllUsers[0].AddFriend(ListOfAllUsers[i],this);
         }
         Console.WriteLine("\nPROGRAM STARTED:THE ABOVE IS TEMPORARY AND SHOULD NOT BE SHOWN IN FINISHED PRODUCT.\n");
 
         Login.login(this);
 
-        Menu.MenuPrompt(CurrentProfile, ListOfAllUsers,this);
+        Menu.MenuPrompt(this);
     }
 
     public List<Profile> GetAllUsers()
@@ -44,10 +44,6 @@ public class FriendFace
     public Profile GetCurrentUser()
     {
         return this.CurrentProfile;
-    }
-    private FriendFace SetCurrentUser()
-    {
-        throw new NotImplementedException();
     }
 
     public void WelcomePrompt()
