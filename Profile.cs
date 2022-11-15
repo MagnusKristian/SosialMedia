@@ -1,4 +1,6 @@
-﻿namespace SosialMedia;
+﻿using System.Globalization;
+
+namespace SosialMedia;
 
 public class Profile
 {
@@ -9,7 +11,7 @@ public class Profile
     public string LastName { get; set; }
     public string ImageURL { get; set; }
     public string Email { get; set; }
-    public string Password { get; set; }
+    private string Password { get; set; }
     public string Address { get; set; }
     public string Description { get; set; }
     public List<Profile> Friends { get; set; }
@@ -26,6 +28,10 @@ public class Profile
         Console.WriteLine();
     }
 
+    public string GetPassword()
+    {
+        return Password;
+    }
     public Profile(Profile profile)
     {
         Name = profile.Name;

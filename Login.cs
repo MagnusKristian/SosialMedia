@@ -47,7 +47,7 @@ public class Login
                         {
                             Console.WriteLine("Please enter correct password: ");
                             string password = Console.ReadLine();
-                            if (chosenUser.Password ==password)
+                            if (chosenUser.GetPassword() ==password)
                             {
                                 passOk = true;
                                 Console.WriteLine("Correct password");

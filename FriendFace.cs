@@ -150,7 +150,7 @@ public class FriendFace
         if (goodPass == true)
         {
             GetCurrentUser().SetPassword(password);
-            Console.WriteLine($"New password is: '{GetCurrentUser().Password}'");
+            Console.WriteLine($"New password is: '{GetCurrentUser().GetPassword()}'");
             return;
         }
         
