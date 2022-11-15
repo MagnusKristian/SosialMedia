@@ -77,8 +77,52 @@ public class FriendFace
 
     public bool PasswordHandler(string password)
     {
-        bool passWordIsGood = false;
-        return passWordIsGood;
+        bool passwordIsGood = false;
+        //bool passIsOk = false;
+        bool passLengthOverEight = false;
+        bool containsNumber = false;
+        bool containsLetter = false;
+        //bool containsSign = false; //-
+        bool containsUpper = false;
+        bool containsLower = false;
+        //bool doesNotContainName = false; //-
+        //bool differentFromPrevPass = false; //-
+
+        if (password.Length < 8) { Console.WriteLine("Password does not contain 8 or more characters."); }
+
+        if (password.Length >= 8) { passLengthOverEight = true; }
+        foreach (var character in password)
+        {
+            if (char.IsDigit(character)) { containsNumber = true; }
+            if (char.IsLetter(character)) { containsLetter = true; }
+            //
+            //if (char.IsSymbol(character)) { containsSign = true; }
+            //
+            if (char.IsUpper(character)) { containsUpper = true; }
+            if (char.IsLower(character)) { containsLower = true; }
+        }
+
+        if (containsNumber == false) { Console.WriteLine("Password does not contain number"); }
+        if (containsLetter == false) { Console.WriteLine("Password does not contain letter"); }
+        //if (containsSign == false) { Console.WriteLine("Password does not contain sign"); }
+        if (containsUpper == false) { Console.WriteLine("Password does not contain uppercase letter"); }
+        if (containsLower == false) { Console.WriteLine("Password does not contain lowercase letter"); }
+        //if (doesNotContainName == false) { Console.WriteLine("Password does not differ from name"); }
+        //if (differentFromPrevPass == false) { Console.WriteLine("Password does not differ from previous password"); }
+        if(
+            passLengthOverEight &&
+            containsNumber &&
+            containsLetter &&
+            /*containsSign &&*/
+            containsUpper &&
+            containsLower /*&&
+            doesNotContainName &&*/
+            /*differentFromPrevPass*/)
+        {
+            passwordIsGood = true;
+        }
+        //----------------------
+        return passwordIsGood;
     }
     public void PasswordChange()
     {
@@ -90,80 +134,109 @@ public class FriendFace
                           "cannot be previous password");
         Console.WriteLine("\nType in your new password: ");
         string password = Console.ReadLine();
-        
-        bool passIsOk = false;
-        bool passLengthOverEight = false;
-        bool containsNumber = false;
-        bool containsLetter = false;
-        //bool containsSign = false; //-
-        bool containsUpper = false;
-        bool containsLower = false;
-        //bool doesNotContainName = false; //-
-        //bool differentFromPrevPass = false; //-
-        if (password.Length <=0){return;}
-        
-        while (passIsOk == false)
+        if (password.Length <= 0) { return; }
+
+        bool goodPass = false;
+        while (goodPass == false)
         {
-            if (password.Length < 8)
+            goodPass = PasswordHandler(password);
+            if (goodPass == false)
             {
-                Console.WriteLine("Password does not contain 8 or more characters.");
-            }
-            else if (password.Length >= 8)
-            {
-                passLengthOverEight = true;
-            }
-            
-            foreach (var character in password)
-            {
-                if (char.IsDigit(character))
-                {
-                    containsNumber = true;
-                }
-                if (char.IsLetter(character))
-                {
-                    containsLetter = true;
-                }
-                //
-                if (char.IsSymbol(character))
-                {
-                    containsSign = true;
-                }
-                //
-                if (char.IsUpper(character))
-                {
-                    containsUpper = true;
-                }
-                if (char.IsLower(character))
-                {
-                    containsLower = true;
-                }
-            }
-            //if(password)
-            
-            if (containsNumber == false) { Console.WriteLine("Password does not contain number"); }
-            if (containsLetter == false) { Console.WriteLine("Password does not contain letter"); }
-            if (containsSign == false) { Console.WriteLine("Password does not contain sign"); }
-            if (containsUpper == false) { Console.WriteLine("Password does not contain uppercase letter"); }
-            if (containsLower == false) { Console.WriteLine("Password does not contain lowercase letter"); }
-            if (doesNotContainName == false) { Console.WriteLine("Password does not differ from name"); }
-            if (differentFromPrevPass == false) { Console.WriteLine("Password does not differ from previous password"); }
-            if
-            (passLengthOverEight &&
-             containsNumber &&
-             containsLetter &&
-             containsSign &&
-             containsUpper &&
-             containsLower &&
-             doesNotContainName &&
-             differentFromPrevPass)
-            {
-                passIsOk = true;
-                GetCurrentUser().SetPassword(password);
-                Console.WriteLine($"New password is: '{GetCurrentUser().Password}'");
-                return;
-            }
-            Console.WriteLine("Try again...");
+                Console.WriteLine("Try again dude.");
             password = Console.ReadLine();
+            }
         }
+
+        if (goodPass == true)
+        {
+            GetCurrentUser().SetPassword(password);
+            Console.WriteLine($"New password is: '{GetCurrentUser().Password}'");
+            return;
+        }
+        
+        
+
+
+        //bool passIsOk = false;
+        //bool passLengthOverEight = false;
+        //bool containsNumber = false;
+        //bool containsLetter = false;
+        ////bool containsSign = false; //-
+        //bool containsUpper = false;
+        //bool containsLower = false;
+        ////bool doesNotContainName = false; //-
+        ////bool differentFromPrevPass = false; //-
+        //if (password.Length <=0){return;}
+
+
+        //bool passIsOk = false;
+        //while (passIsOk == false)
+        //{
+        //    PasswordHandler(password);
+        //    if (password.Length <= 0) { return; }
+
+
+
+        //    if (password.Length < 8)
+        //    {
+        //        Console.WriteLine("Password does not contain 8 or more characters.");
+        //    }
+        //    else if (password.Length >= 8)
+        //    {
+        //        passLengthOverEight = true;
+        //    }
+            
+        //    foreach (var character in password)
+        //    {
+        //        if (char.IsDigit(character))
+        //        {
+        //            containsNumber = true;
+        //        }
+        //        if (char.IsLetter(character))
+        //        {
+        //            containsLetter = true;
+        //        }
+        //        //
+        //        if (char.IsSymbol(character))
+        //        {
+        //            containsSign = true;
+        //        }
+        //        //
+        //        if (char.IsUpper(character))
+        //        {
+        //            containsUpper = true;
+        //        }
+        //        if (char.IsLower(character))
+        //        {
+        //            containsLower = true;
+        //        }
+        //    }
+        //    //if(password)
+            
+        //    if (containsNumber == false) { Console.WriteLine("Password does not contain number"); }
+        //    if (containsLetter == false) { Console.WriteLine("Password does not contain letter"); }
+        //    if (containsSign == false) { Console.WriteLine("Password does not contain sign"); }
+        //    if (containsUpper == false) { Console.WriteLine("Password does not contain uppercase letter"); }
+        //    if (containsLower == false) { Console.WriteLine("Password does not contain lowercase letter"); }
+        //    if (doesNotContainName == false) { Console.WriteLine("Password does not differ from name"); }
+        //    if (differentFromPrevPass == false) { Console.WriteLine("Password does not differ from previous password"); }
+        //    if
+        //    (passLengthOverEight &&
+        //     containsNumber &&
+        //     containsLetter &&
+        //     containsSign &&
+        //     containsUpper &&
+        //     containsLower &&
+        //     doesNotContainName &&
+        //     differentFromPrevPass)
+        //    {
+        //        passIsOk = true;
+        //        GetCurrentUser().SetPassword(password);
+        //        Console.WriteLine($"New password is: '{GetCurrentUser().Password}'");
+        //        return;
+        //    }
+        //    Console.WriteLine("Try again...");
+        //    password = Console.ReadLine();
+        //}
     }
 }
