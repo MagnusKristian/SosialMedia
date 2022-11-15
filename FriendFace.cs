@@ -32,7 +32,8 @@ public class FriendFace
         {
             ListOfAllUsers[0].AddFriend(ListOfAllUsers[i],this);
         }
-        Console.WriteLine("\nPROGRAM STARTED:THE ABOVE IS TEMPORARY AND SHOULD NOT BE SHOWN IN FINISHED PRODUCT.\n");
+        //Console.Clear();
+        //Console.WriteLine("\nPROGRAM STARTED:THE ABOVE IS TEMPORARY AND SHOULD NOT BE SHOWN IN FINISHED PRODUCT.\n");
 
         Login.login(this);
 
@@ -72,5 +73,97 @@ public class FriendFace
     public void SetCurrentUser(Profile user)
     {
         CurrentProfile = user;
+    }
+
+    public bool PasswordHandler(string password)
+    {
+        bool passWordIsGood = false;
+        return passWordIsGood;
+    }
+    public void PasswordChange()
+    {
+        Console.WriteLine("Criteria for new password: \n " +
+                          "8 characters or more in length\n" +
+                          "1 or more number or sign\n" +
+                          "1 or more letter character\n" +
+                          "cannot be your name\n" +
+                          "cannot be previous password");
+        Console.WriteLine("\nType in your new password: ");
+        string password = Console.ReadLine();
+        
+        bool passIsOk = false;
+        bool passLengthOverEight = false;
+        bool containsNumber = false;
+        bool containsLetter = false;
+        //bool containsSign = false; //-
+        bool containsUpper = false;
+        bool containsLower = false;
+        //bool doesNotContainName = false; //-
+        //bool differentFromPrevPass = false; //-
+        if (password.Length <=0){return;}
+        
+        while (passIsOk == false)
+        {
+            if (password.Length < 8)
+            {
+                Console.WriteLine("Password does not contain 8 or more characters.");
+            }
+            else if (password.Length >= 8)
+            {
+                passLengthOverEight = true;
+            }
+            
+            foreach (var character in password)
+            {
+                if (char.IsDigit(character))
+                {
+                    containsNumber = true;
+                }
+                if (char.IsLetter(character))
+                {
+                    containsLetter = true;
+                }
+                //
+                if (char.IsSymbol(character))
+                {
+                    containsSign = true;
+                }
+                //
+                if (char.IsUpper(character))
+                {
+                    containsUpper = true;
+                }
+                if (char.IsLower(character))
+                {
+                    containsLower = true;
+                }
+            }
+            //if(password)
+            
+            if (containsNumber == false) { Console.WriteLine("Password does not contain number"); }
+            if (containsLetter == false) { Console.WriteLine("Password does not contain letter"); }
+            if (containsSign == false) { Console.WriteLine("Password does not contain sign"); }
+            if (containsUpper == false) { Console.WriteLine("Password does not contain uppercase letter"); }
+            if (containsLower == false) { Console.WriteLine("Password does not contain lowercase letter"); }
+            if (doesNotContainName == false) { Console.WriteLine("Password does not differ from name"); }
+            if (differentFromPrevPass == false) { Console.WriteLine("Password does not differ from previous password"); }
+            if
+            (passLengthOverEight &&
+             containsNumber &&
+             containsLetter &&
+             containsSign &&
+             containsUpper &&
+             containsLower &&
+             doesNotContainName &&
+             differentFromPrevPass)
+            {
+                passIsOk = true;
+                GetCurrentUser().SetPassword(password);
+                Console.WriteLine($"New password is: '{GetCurrentUser().Password}'");
+                return;
+            }
+            Console.WriteLine("Try again...");
+            password = Console.ReadLine();
+        }
     }
 }

@@ -7,6 +7,8 @@ public class Profile
     public string UserName { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
+    public string ImageURL { get; set; }
+    public string Email { get; set; }
     public string Password { get; set; }
     public string Address { get; set; }
     public string Description { get; set; }
@@ -80,9 +82,13 @@ public class Profile
     public void DisplayFriends()
     {
         Console.WriteLine($"Here is all of {Name}'s friends: ");
+        if(Friends.Count <= 0){
+            Console.WriteLine($"{Name} has no friends.");
+            return;
+        }
         foreach (var friend in Friends)
         {
-            Console.WriteLine($"{friend.Name}");
+            Console.WriteLine($"-{friend.Name}");
         }
     }
 
@@ -93,11 +99,16 @@ public class Profile
 
     public void ShowDescription()
     {
-        Console.WriteLine(Description);
+        Console.WriteLine($"{Description}");
     }
 
     public void ShowProfile(Profile user)
     {
+        if (user == null)
+        {
+            Console.WriteLine("Error...IN SHOWPROFILE()-PROFILE");
+            return;
+        }
         Console.WriteLine("********************");
         Console.WriteLine($"*Name: {user.Name}");
         Console.WriteLine("*                  *");

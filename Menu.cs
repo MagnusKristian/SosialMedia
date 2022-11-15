@@ -9,17 +9,18 @@ public class Menu
 
         while (true)
         {
+            //Console.Clear();
             Console.WriteLine("\nWelcome to the main menu, here are your choices: ");
             Console.WriteLine("1. Add friend: ");
             Console.WriteLine("2. Remove friend: ");
             Console.WriteLine("3. View all your friends: ");
             Console.WriteLine("4. Choose a friend and view their profile: ");
-            Console.WriteLine("5. Sign out: ");
-            Console.WriteLine("6. Debug show current user: ");
-            Console.WriteLine("7. Debug show all users: ");
+            Console.WriteLine("5. Settings: ");
+            Console.WriteLine("6. Sign out: ");
+            Console.WriteLine("7. Debug show current user: ");
+            Console.WriteLine("8. Debug show all users: ");
+            Console.WriteLine("-----------------------------");
 
-
-            Console.WriteLine("----------");
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
@@ -51,19 +52,27 @@ public class Menu
                 case "5":
                     Console.Clear();
                     Console.WriteLine("5");
-                    Console.WriteLine("Sign out");
-
-                    SignOut(friendFace);
+                    Console.WriteLine("Settings");
+                    Settings(friendFace);
                     break;
                 case "6":
                     Console.Clear();
                     Console.WriteLine("6");
+                    Console.WriteLine("Sign out");
+
+                    SignOut(friendFace);
+                    break;
+                case "7":
+                    Console.Clear();
+                    Console.WriteLine("7");
                     Console.WriteLine("CURRENT FUCKING USER");
                     Console.WriteLine($"CURRENT USER IS: {friendFace.GetCurrentUser().Name}");
                     Console.ReadLine();
                     
                     break;
-                case "7":
+                case "8":
+                    Console.Clear();
+                    Console.WriteLine("8");
                     friendFace.ShowAllUsers();
                     break;
                 default:
@@ -92,6 +101,68 @@ public class Menu
         }
         
     }
+
+    public void Settings(FriendFace friendFace)
+    {
+        Console.WriteLine("Settings menu: ");
+        Console.WriteLine("1. Change Name.");
+        Console.WriteLine("2. Change Password.");
+        Console.WriteLine("3. Change Username");
+        Console.WriteLine("4. Change Description");
+        Console.WriteLine("5. Change Profile picture");
+        Console.WriteLine("6. EXIT.");
+
+
+
+        Console.WriteLine();
+        string choice = Console.ReadLine();
+        //bool choiceOk = false;
+        //while (choice != "1" ||
+        //       choice != "2" ||
+        //       choice != "3" ||
+        //       choice != "4" ||
+        //       choice != "5" ||
+        //       choice != "6")
+        //{
+        //    Console.WriteLine("Enter valid choice.");
+        //    choice = Console.ReadLine();
+        //}
+
+        switch (choice)
+            {
+                case "1":
+                    Console.WriteLine("1. Change Name.");
+                    Console.WriteLine("does not work yet.");
+
+                    break;
+                case "2":
+                    Console.WriteLine("2. Change Password.");
+                    friendFace.PasswordChange();
+                    break;
+                case "3":
+                    Console.WriteLine("3. Change Username");
+                    Console.WriteLine("does not work yet.");
+
+                    break;
+                case "4":
+                    Console.WriteLine("4. Change Description");
+                    Console.WriteLine("does not work yet.");
+
+                    break;
+                case "5":
+                    Console.WriteLine("5. Change Profile picture");
+                    Console.WriteLine("does not work yet.");
+
+                    break;
+                case "6":
+                    Console.WriteLine("exit.");
+                    return;
+                    break;
+                default:
+                    break;
+            }
+
+    }
     public Profile CheckForFriendInDatabase(List<Profile> allUserProfiles)
     {
         Profile ChosenFriend = null;
@@ -99,6 +170,8 @@ public class Menu
         {
             Console.WriteLine("Type in the name here: ");
             string friendName = Console.ReadLine();
+            if (friendName.ToLower() == "x"){continue;}
+            //TODO: BUG-cannot exit without giving a valid username.
             foreach (var profile in allUserProfiles)
             {
                if (profile.Name.ToLower() == friendName.ToLower())
