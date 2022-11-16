@@ -78,6 +78,8 @@ public class Menu
                 default:
                     break;
             }
+            //Console.Clear();
+
         }
     }
 
