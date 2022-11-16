@@ -11,35 +11,31 @@ public class FriendFace
 
     public FriendFace()
     {
-        //"database" for alle brukerene på friendface
-        ListOfAllUsers = new List<Profile>();
-        ListOfAllUsers.Add(new Profile("Magnus"));
-        ListOfAllUsers.Add(new Profile("Marie"));
-        ListOfAllUsers.Add(new Profile("Terje"));
-        ListOfAllUsers.Add(new Profile("Eskil"));
-        ListOfAllUsers.Add(new Profile("Linn"));
-        ListOfAllUsers.Add(new Profile("Tommy"));
-        ListOfAllUsers.Add(new Profile("Tom"));
-        ListOfAllUsers.Add(new Profile("Marius"));
-        ListOfAllUsers.Add(new Profile("Thorbjørn"));
-        ListOfAllUsers.Add(new Profile("Kristian G"));
-        ListOfAllUsers.Add(new Profile("Kristian B"));
-        ListOfAllUsers.Add(new Profile("Erik"));
-        ListOfAllUsers.Add(new Profile("Viktor"));
+        tempHelperFunction();
+        Run();
+    }
 
+    public void tempHelperFunction()
+    {
+
+        //"database" for alle brukerene på friendface
+        AddExampleUsers AddUsers = new AddExampleUsers();
+        ListOfAllUsers = AddUsers.AddUsers();
         //legger til alle på friendface i vennelista til "magnus".
         for (int i = 1; i < ListOfAllUsers.Count; i++)
         {
-            ListOfAllUsers[0].AddFriend(ListOfAllUsers[i],this);
+            ListOfAllUsers[0].AddFriend(ListOfAllUsers[i], this);
         }
         //Console.Clear();
         //Console.WriteLine("\nPROGRAM STARTED:THE ABOVE IS TEMPORARY AND SHOULD NOT BE SHOWN IN FINISHED PRODUCT.\n");
 
+    }
+    public void Run()
+    {
         Login.login(this);
 
         Menu.MenuPrompt(this);
     }
-
     public List<Profile> GetAllUsers()
     {
         return this.ListOfAllUsers;

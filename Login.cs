@@ -29,7 +29,7 @@ public class Login
             Console.WriteLine("*                                      *");
             Console.WriteLine("****************************************");
             Console.WriteLine();
-            Console.BackgroundColor = ConsoleColor.Cyan;
+            //Console.BackgroundColor = ConsoleColor.Cyan;
 
             logInChoice = Console.ReadLine();
             Console.ResetColor();

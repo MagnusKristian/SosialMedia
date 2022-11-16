@@ -40,8 +40,8 @@ public class Profile
         Description = $"{Name}'s description: \n";
         Friends = new List<Profile>();
         Id = Guid.NewGuid();
-        Console.WriteLine($"Welcome to FriendFace, {Name}-PROFILE!");
-        Console.WriteLine();
+        //Console.WriteLine($"Welcome to FriendFace, {Name}-PROFILE!");
+        //Console.WriteLine();
 
     }
 

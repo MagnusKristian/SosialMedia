@@ -10,7 +10,7 @@ public class Menu
         while (true)
         {
             //Console.Clear();
-            Console.WriteLine("\nWelcome to the main menu, here are your choices: ");
+            Console.WriteLine("\n Main menu, here are your choices: ");
             Console.WriteLine("1. Add friend: ");
             Console.WriteLine("2. Remove friend: ");
             Console.WriteLine("3. View all your friends: ");
@@ -65,7 +65,6 @@ public class Menu
                 case "7":
                     Console.Clear();
                     Console.WriteLine("7");
-                    Console.WriteLine("CURRENT FUCKING USER");
                     Console.WriteLine($"CURRENT USER IS: {friendFace.GetCurrentUser().Name}");
                     Console.ReadLine();
                     
