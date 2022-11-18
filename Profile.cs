@@ -15,6 +15,8 @@ public class Profile
     public string Address { get; set; }
     public string Description { get; set; }
     public List<Profile> Friends { get; set; }
+    public List<Profile> PendingFriends { get; set; }
+    public bool PendingFriendRequest { get; set; }
 
     public Profile(string name = "Unknown", string password = "1234")
     {
@@ -24,10 +26,12 @@ public class Profile
         Description = $"{Name}'s description: \n";
         Friends = new List<Profile>();
         Id = Guid.NewGuid();
+        PendingFriendRequest = false;
+        PendingFriends = new List<Profile>();
+
         Console.WriteLine($"Welcome to FriendFace, {Name}!");
         Console.WriteLine();
     }
-
     public string GetPassword()
     {
         return Password;
@@ -40,16 +44,11 @@ public class Profile
         Description = $"{Name}'s description: \n";
         Friends = new List<Profile>();
         Id = Guid.NewGuid();
-        //Console.WriteLine($"Welcome to FriendFace, {Name}-PROFILE!");
-        //Console.WriteLine();
-
     }
-
     public void SetPassword(string newPassword)
     {
         Password = newPassword;
     }
-
     public void AddFriend(Profile friendToAdd,FriendFace friendFace)
     {
         if (friendToAdd == null) { Console.WriteLine("Error, user not found, try again!"); return; }
@@ -58,16 +57,12 @@ public class Profile
         if(Friends.Contains(friendToAdd)){ Console.WriteLine("Error, user is already a friend, try again!"); return;}
         Friends.Add(friendToAdd);
         Console.WriteLine($"{Name} is now friends with {friendToAdd.Name}");
-
         //add the user to the friends list also
         //friendToAdd.AddFriend(friendFace.GetCurrentUser(), friendFace);
-
         friendToAdd.Friends.Add(this);
         //friendToAdd.Friends.Add(friendFace.GetCurrentUser());
         Console.WriteLine($"{friendToAdd.Name} is now friends with {Name}");
-
     }
-
     public void RemoveFriend(Profile friendToRemove, Profile userRemovingFriend)
     {
         if(friendToRemove == null){ Console.WriteLine("Error, user not found, try again!"); return;}
@@ -84,7 +79,6 @@ public class Profile
             Console.WriteLine($"Error. '{userRemovingFriend.Name}' is not currently friends with '{friendToRemove.Name}'");
         }
     }
-
     public void DisplayFriends()
     {
         Console.WriteLine($"Here is all of {Name}'s friends: ");
@@ -123,10 +117,10 @@ public class Profile
         Console.WriteLine($"*{user.Name}'s Friends: ");
         if (user.Friends.Count>=1)
         {
-            foreach (Profile friend in user.Friends)
+            foreach (var friend in user.Friends)
             {
-            Console.WriteLine($"*{friend.Name} ");
-            Console.WriteLine("*                  *");
+                Console.WriteLine($"*{friend.Name} ");
+                Console.WriteLine("*                  *");
             }
         }
         else

@@ -2,14 +2,10 @@
 
 public class Menu
 {
-    public void MenuPrompt(/*Profile userProfile, List<Profile> allUserProfiles, */FriendFace friendFace)
+    public void MenuPrompt(FriendFace friendFace)
     {
-        //Profile curUser = friendFace.GetCurrentUser();
-        //List<Profile> allUsers = friendFace.GetAllUsers();
-
         while (true)
         {
-            //Console.Clear();
             Console.WriteLine("\n Main menu, here are your choices: ");
             Console.WriteLine("1. Add friend: ");
             Console.WriteLine("2. Remove friend: ");
@@ -19,7 +15,18 @@ public class Menu
             Console.WriteLine("6. Sign out: ");
             Console.WriteLine("7. Debug show current user: ");
             Console.WriteLine("8. Debug show all users: ");
+            Console.WriteLine("9. View friend requests: ");
             Console.WriteLine("-----------------------------");
+            Console.WriteLine($"");
+
+
+            //friendFace.GetCurrentUser().PendingFriendRequest ? Console.WriteLine($""); : Console.WriteLine($"");
+            
+            if (friendFace.GetCurrentUser().PendingFriendRequest)
+            {
+                Console.WriteLine($"You have {friendFace.GetCurrentUser().PendingFriends.Count} friend requests.");
+            }
+            
 
             string userChoice = Console.ReadLine();
             switch (userChoice)
@@ -46,7 +53,6 @@ public class Menu
                     Console.Clear();
                     Console.WriteLine("4");
                     Console.WriteLine("Choose a friend and view their profile: ");
-
                     friendFace.GetCurrentUser().ShowProfile(CheckForFriendInDatabase(friendFace.GetAllUsers()));
                     break;
                 case "5":
@@ -74,11 +80,14 @@ public class Menu
                     Console.WriteLine("8");
                     friendFace.ShowAllUsers();
                     break;
+                case "9":
+                    Console.Clear();
+                    Console.WriteLine("9");
+                    friendFace.friendHandler.ShowFriendRequests(friendFace);
+                    break;
                 default:
                     break;
             }
-            //Console.Clear();
-
         }
     }
 
@@ -100,7 +109,6 @@ public class Menu
                 return;
             }
         }
-        
     }
 
     public void Settings(FriendFace friendFace)
@@ -112,57 +120,41 @@ public class Menu
         Console.WriteLine("4. Change Description");
         Console.WriteLine("5. Change Profile picture");
         Console.WriteLine("6. EXIT.");
-
-
-
         Console.WriteLine();
         string choice = Console.ReadLine();
-        //bool choiceOk = false;
-        //while (choice != "1" ||
-        //       choice != "2" ||
-        //       choice != "3" ||
-        //       choice != "4" ||
-        //       choice != "5" ||
-        //       choice != "6")
-        //{
-        //    Console.WriteLine("Enter valid choice.");
-        //    choice = Console.ReadLine();
-        //}
-
         switch (choice)
-            {
-                case "1":
-                    Console.WriteLine("1. Change Name.");
-                    Console.WriteLine("does not work yet.");
+        {
+            case "1":
+                Console.WriteLine("1. Change Name.");
+                Console.WriteLine("does not work yet.");
 
-                    break;
-                case "2":
-                    Console.WriteLine("2. Change Password.");
-                    friendFace.PasswordChange();
-                    break;
-                case "3":
-                    Console.WriteLine("3. Change Username");
-                    Console.WriteLine("does not work yet.");
+                break;
+            case "2":
+                Console.WriteLine("2. Change Password.");
+                friendFace.passwordHandler.PasswordChange(friendFace);
+                break;
+            case "3":
+                Console.WriteLine("3. Change Username");
+                Console.WriteLine("does not work yet.");
 
-                    break;
-                case "4":
-                    Console.WriteLine("4. Change Description");
-                    Console.WriteLine("does not work yet.");
+                break;
+            case "4":
+                Console.WriteLine("4. Change Description");
+                Console.WriteLine("does not work yet.");
 
-                    break;
-                case "5":
-                    Console.WriteLine("5. Change Profile picture");
-                    Console.WriteLine("does not work yet.");
+                break;
+            case "5":
+                Console.WriteLine("5. Change Profile picture");
+                Console.WriteLine("does not work yet.");
 
-                    break;
-                case "6":
-                    Console.WriteLine("exit.");
-                    return;
-                    break;
-                default:
-                    break;
-            }
-
+                break;
+            case "6":
+                Console.WriteLine("exit.");
+                return;
+                break;
+            default:
+                break;
+        }
     }
     public Profile CheckForFriendInDatabase(List<Profile> allUserProfiles)
     {
@@ -185,20 +177,6 @@ public class Menu
                 Console.WriteLine("Could not find user, try again...");
             }
         }
-
-        //while (ChosenFriend == null)
-        //{
-        //    Console.WriteLine("Could not find user, try again...");
-        //    friendName = Console.ReadLine();
-        //    foreach (var profile in allUserProfiles)
-        //    {
-        //        if (profile.Name.ToLower() == friendName.ToLower())
-        //        {
-        //            ChosenFriend = profile;
-        //        }
-        //    }
-        //}
-        //userProfile.AddFriend(ChosenFriend);
         return ChosenFriend;
     }
 }

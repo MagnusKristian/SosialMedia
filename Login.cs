@@ -2,14 +2,9 @@
 
 public class Login
 {
-    //SignUp signUp = new SignUp();
     public void login(FriendFace friendFace)
     {
-        //Console.WriteLine("Welcome to FriendFace!");
-        //Console.WriteLine("Type '1' to sign in:");
-        //Console.WriteLine("Type '2' to sign up:");
         string logInChoice = "";
-
         bool validChoice = false;
         while (validChoice == false)
         {
@@ -29,11 +24,8 @@ public class Login
             Console.WriteLine("*                                      *");
             Console.WriteLine("****************************************");
             Console.WriteLine();
-            //Console.BackgroundColor = ConsoleColor.Cyan;
-
             logInChoice = Console.ReadLine();
             Console.ResetColor();
-
             if (logInChoice == "1" || logInChoice == "2")
             {
                 validChoice = true;
@@ -42,7 +34,6 @@ public class Login
             }
         }
         Console.ResetColor();
-        
         bool userFound= false;
         bool logInOk = false;
         if (logInChoice == "1")
@@ -57,7 +48,6 @@ public class Login
             Console.WriteLine("****************************************");
             Console.WriteLine();
             Console.ResetColor();
-
             string username = "";
             Profile chosenUser = null;
             while (userFound == false)
@@ -82,6 +72,11 @@ public class Login
                                 Console.WriteLine("Correct password");
                                 friendFace.SetCurrentUser(chosenUser);
                                 Console.WriteLine($"welcome back, {chosenUser.Name}!");
+
+                                //For testing. Remove later ------------
+                                friendFace.GetCurrentUser().PendingFriends.Add(new Profile("Example new friends name"));
+                                friendFace.GetCurrentUser().PendingFriendRequest = true;
+                                //-------------
                             }
                         }
                     }
@@ -90,7 +85,6 @@ public class Login
                 {
                     Console.BackgroundColor = ConsoleColor.DarkRed;
                     Console.ForegroundColor = ConsoleColor.Black;
-
                     Console.WriteLine("User not found. Try again.");
                     Console.ResetColor();
                     Console.ForegroundColor = ConsoleColor.Black;
@@ -107,20 +101,26 @@ public class Login
             }
             if (chosenUser != null && userFound == true)
             {
-                //Console.WriteLine("---------------");
-                //Console.WriteLine($"Found user '{chosenUser.Name}', Logging in...");
                 friendFace.SetCurrentUser(chosenUser);
             }
-
-            //friendFace.WelcomePrompt();
         }
         if (logInChoice == "2")
         {
             Console.WriteLine("2");
-            //signUp.signUp();
-            friendFace.WelcomePrompt();
+            friendFace.SignUp.WelcomePrompt(friendFace);
+            Console.WriteLine("Your password is '1234', do you want to set a new password?");
+            Console.WriteLine("type '1' for YES. \nType '2' for NO.");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    Console.WriteLine();
+                    friendFace.passwordHandler.PasswordChange(friendFace);
+                    break;
+                case "2":
+                    Console.WriteLine("Thats fine, change it at a later date.");
+                    break;
+            }
         }
     }
-
-   
 }
