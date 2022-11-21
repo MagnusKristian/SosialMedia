@@ -78,8 +78,12 @@ public class FriendHandler
             for (int i = 0; i < friendFace.GetCurrentUser().PendingFriends.Count; i++)
             {
                 Console.WriteLine($"{friendFace.GetCurrentUser().PendingFriends[i].Name} wants to be your friend.");
-                Console.WriteLine("Type '1' to accept. Type '2' to decline.");
+                Console.WriteLine("Type '1' to accept. Type '2' to decline. Type 'x' to Skip for now.");
                 string choice = Console.ReadLine();
+                if (choice.ToLower()== "x")
+                {
+                    return;
+                }
                 while (choice != "1" && choice != "2")
                 {
                     Console.WriteLine("Type '1' to accept. Type '2' to decline.");

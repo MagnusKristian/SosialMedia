@@ -76,20 +76,14 @@ public class Login
 
                                 //TODO:For testing. Remove later ------------
                                 //friendFace.ListOfAllUsers.Add(new Profile("Example new friends name1"));
-                                //friendFace.ListOfAllUsers.Add(new Profile("Example new friends name2"));
-                                //friendFace.GetCurrentUser().PendingFriends.Add(friendFace.ListOfAllUsers[friendFace.ListOfAllUsers.Count-1]);
-                                //friendFace.GetCurrentUser().PendingFriends.Add(friendFace.ListOfAllUsers[friendFace.ListOfAllUsers.Count-2]);
-
                                 friendFace.ListOfAllUsers[1].AddFriend(friendFace.ListOfAllUsers[0],friendFace);
-
                                 //if (friendFace.GetCurrentUser().Name.ToLower() == "Magnus".ToLower())
                                 //{
-                                //friendFace.GetCurrentUser().PendingFriends.Add(friendFace.ListOfAllUsers[1]);
-                                //friendFace.ListOfAllUsers[1].SentPendingFriends.Add(friendFace.ListOfAllUsers[0]);
+                                //friendFace.ListOfAllUsers[1].AddFriend(friendFace.ListOfAllUsers[0],friendFace);
                                 //}
-
                                 //friendFace.GetCurrentUser().PendingFriendRequest = true;
                                 //-------------
+
 
                                 friendFace.friendHandler.CheckForFriendRequests(friendFace);
                             }
