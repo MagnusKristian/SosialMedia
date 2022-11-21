@@ -24,7 +24,7 @@ public class Profile
     {
         Name = name;
         //TODO: remove this and fix login with username
-        UserName = name;
+        UserName = Name;
         //
         Password = password;
         Address = string.Empty;
@@ -45,12 +45,17 @@ public class Profile
     }
     public Profile(Profile profile)
     {
+        UserName = Name;
         Name = profile.Name;
         Password = profile.Password;
         Address = string.Empty;
         Description = $"{Name}'s description: ";
         Friends = new List<Profile>();
         Id = Guid.NewGuid();
+        PendingFriendRequest = false;
+        PendingFriends = new List<Profile>();
+        SentPendingFriends = new List<Profile>();
+        SentPendingFriendRequest = false;
     }
     public void SetPassword(string newPassword)
     {

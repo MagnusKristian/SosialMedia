@@ -37,6 +37,7 @@ public class Menu
                     Console.WriteLine("1");
                     Console.WriteLine("Add friend: ");
                     friendFace.GetCurrentUser().AddFriend(CheckForFriendInDatabase(friendFace.GetAllUsers()),friendFace);
+                    Console.Clear();
                     break;
                 case "2":
                     Console.Clear();
