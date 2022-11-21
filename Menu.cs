@@ -31,6 +31,9 @@ public class Menu
             {
                 case "1":
                     Console.Clear();
+                    if (friendFace.GetCurrentUser().SentPendingFriends.Count<1) { friendFace.GetCurrentUser().SentPendingFriendRequest = false; }
+                    if (friendFace.GetCurrentUser().SentPendingFriends.Count >= 1) { friendFace.GetCurrentUser().SentPendingFriendRequest = true; }
+                    friendFace.friendHandler.ShowSentFriendRequests(friendFace);
                     Console.WriteLine("1");
                     Console.WriteLine("Add friend: ");
                     friendFace.GetCurrentUser().AddFriend(CheckForFriendInDatabase(friendFace.GetAllUsers()),friendFace);

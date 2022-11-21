@@ -56,7 +56,7 @@ public class Login
                 Console.Clear();
                 for (int i = 0; i < friendFace.ListOfAllUsers.Count; i++)
                 {
-                    if (username.ToLower() == friendFace.ListOfAllUsers[i].Name.ToLower())
+                    if (username.ToLower() == friendFace.ListOfAllUsers[i].GetUserName().ToLower())
                     {
                         userFound = true;
                         chosenUser = friendFace.ListOfAllUsers[i];
@@ -73,16 +73,25 @@ public class Login
                                 friendFace.SetCurrentUser(chosenUser);
                                 Console.WriteLine($"welcome back, {chosenUser.Name}!");
                                 friendFace.friendHandler.CheckForFriendRequests(friendFace);
-                                
-                                //TODO:For testing. Remove later ------------
-                                friendFace.ListOfAllUsers.Add(new Profile("Example new friends name1"));
-                                friendFace.ListOfAllUsers.Add(new Profile("Example new friends name2"));
-                                friendFace.GetCurrentUser().PendingFriends.Add(friendFace.ListOfAllUsers[friendFace.ListOfAllUsers.Count-1]);
-                                friendFace.GetCurrentUser().PendingFriends.Add(friendFace.ListOfAllUsers[friendFace.ListOfAllUsers.Count-2]);
-                                //friendFace.GetCurrentUser().PendingFriendRequest = true;
-                                friendFace.friendHandler.CheckForFriendRequests(friendFace);
 
+                                //TODO:For testing. Remove later ------------
+                                //friendFace.ListOfAllUsers.Add(new Profile("Example new friends name1"));
+                                //friendFace.ListOfAllUsers.Add(new Profile("Example new friends name2"));
+                                //friendFace.GetCurrentUser().PendingFriends.Add(friendFace.ListOfAllUsers[friendFace.ListOfAllUsers.Count-1]);
+                                //friendFace.GetCurrentUser().PendingFriends.Add(friendFace.ListOfAllUsers[friendFace.ListOfAllUsers.Count-2]);
+
+                                friendFace.ListOfAllUsers[1].AddFriend(friendFace.ListOfAllUsers[0],friendFace);
+
+                                //if (friendFace.GetCurrentUser().Name.ToLower() == "Magnus".ToLower())
+                                //{
+                                //friendFace.GetCurrentUser().PendingFriends.Add(friendFace.ListOfAllUsers[1]);
+                                //friendFace.ListOfAllUsers[1].SentPendingFriends.Add(friendFace.ListOfAllUsers[0]);
+                                //}
+
+                                //friendFace.GetCurrentUser().PendingFriendRequest = true;
                                 //-------------
+
+                                friendFace.friendHandler.CheckForFriendRequests(friendFace);
                             }
                         }
                     }

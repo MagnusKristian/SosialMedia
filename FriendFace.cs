@@ -21,9 +21,11 @@ public class FriendFace
         AddExampleUsers AddUsers = new AddExampleUsers();
         ListOfAllUsers = AddUsers.AddUsers();
         //legger til alle på friendface i vennelista til "magnus".
-        for (int i = 1; i < ListOfAllUsers.Count; i++)
+        // 2 for hoppe over "magnus" og "marie"-
+        for (int i = 2; i < ListOfAllUsers.Count; i++)
         {
-            ListOfAllUsers[0].AddFriend(ListOfAllUsers[i], this);
+            ListOfAllUsers[0].Friends.Add(ListOfAllUsers[i]);
+            ListOfAllUsers[i].Friends.Add(ListOfAllUsers[0]);
         }
 
         //Console.Clear();

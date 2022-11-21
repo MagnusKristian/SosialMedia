@@ -2,8 +2,16 @@
 
 public class FriendHandler
 {
+    public void SendFriendRequest(Profile currenProfile, Profile newFriend)
+    {
+        newFriend.PendingFriends.Add(currenProfile);
+        newFriend.PendingFriendRequest = true;
+        currenProfile.SentPendingFriends.Add(newFriend);
+        currenProfile.SentPendingFriendRequest = true;
+    }
     public void AcceptFriendRequest(FriendFace friendFace,Profile newFriend)
     {
+        //adds friend to this user
         friendFace.GetCurrentUser().Friends.Add(newFriend);
         Console.WriteLine($"{friendFace.GetCurrentUser().Name} is now friends with {newFriend.Name}");
         friendFace.GetCurrentUser().PendingFriends.Remove(newFriend);
@@ -11,12 +19,26 @@ public class FriendHandler
         {
             friendFace.GetCurrentUser().PendingFriendRequest = false;
         }
+        //adds this user to friend
+        newFriend.Friends.Add(friendFace.GetCurrentUser());
+        Console.WriteLine($"{newFriend.Name} is now friends with {friendFace.GetCurrentUser().Name}.");
+        newFriend.SentPendingFriends.Remove(friendFace.GetCurrentUser());
+        if (newFriend.SentPendingFriends.Count<1)
+        {
+            newFriend.SentPendingFriendRequest = false;
+        }
+
     }
     public void DeclineFriendRequest(FriendFace friendFace,Profile newFriend)
     {
         Console.WriteLine("Decline friend request.");
         friendFace.GetCurrentUser().PendingFriends.Remove(newFriend);
         Console.WriteLine($"{newFriend.Name}'s friend request was denied. (Removed from pending friends.)");
+        newFriend.SentPendingFriends.Remove(friendFace.GetCurrentUser());
+        if (newFriend.SentPendingFriends.Count < 1)
+        {
+            newFriend.SentPendingFriendRequest = false;
+        }
     }
 
     public void CheckForFriendRequests(FriendFace friendFace)
@@ -32,6 +54,23 @@ public class FriendHandler
         }
     }
 
+    public void ShowSentFriendRequests(FriendFace friendFace)
+    {
+        if (friendFace.GetCurrentUser().SentPendingFriends.Count >= 1)
+        {
+            friendFace.GetCurrentUser().SentPendingFriendRequest = true;
+            Console.WriteLine($"**** You have sent friend requests to: ****");
+            foreach (var potentialFriend in friendFace.GetCurrentUser().SentPendingFriends)
+            {
+                Console.WriteLine($"*- {potentialFriend.Name}");
+            }
+        }
+
+        if (friendFace.GetCurrentUser().SentPendingFriendRequest == false)
+        {
+            Console.WriteLine("**** You do not have any pending sent friend requests. ****");
+        }
+    }
     public void ShowFriendRequests(FriendFace friendFace)
     {
         if (friendFace.GetCurrentUser().PendingFriendRequest)
