@@ -72,10 +72,16 @@ public class Login
                                 Console.WriteLine("Correct password");
                                 friendFace.SetCurrentUser(chosenUser);
                                 Console.WriteLine($"welcome back, {chosenUser.Name}!");
+                                friendFace.friendHandler.CheckForFriendRequests(friendFace);
+                                
+                                //TODO:For testing. Remove later ------------
+                                friendFace.ListOfAllUsers.Add(new Profile("Example new friends name1"));
+                                friendFace.ListOfAllUsers.Add(new Profile("Example new friends name2"));
+                                friendFace.GetCurrentUser().PendingFriends.Add(friendFace.ListOfAllUsers[friendFace.ListOfAllUsers.Count-1]);
+                                friendFace.GetCurrentUser().PendingFriends.Add(friendFace.ListOfAllUsers[friendFace.ListOfAllUsers.Count-2]);
+                                //friendFace.GetCurrentUser().PendingFriendRequest = true;
+                                friendFace.friendHandler.CheckForFriendRequests(friendFace);
 
-                                //For testing. Remove later ------------
-                                friendFace.GetCurrentUser().PendingFriends.Add(new Profile("Example new friends name"));
-                                friendFace.GetCurrentUser().PendingFriendRequest = true;
                                 //-------------
                             }
                         }

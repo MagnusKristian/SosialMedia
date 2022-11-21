@@ -19,8 +19,6 @@ public class Menu
             Console.WriteLine("-----------------------------");
             Console.WriteLine($"");
 
-
-            //friendFace.GetCurrentUser().PendingFriendRequest ? Console.WriteLine($""); : Console.WriteLine($"");
             
             if (friendFace.GetCurrentUser().PendingFriendRequest)
             {
