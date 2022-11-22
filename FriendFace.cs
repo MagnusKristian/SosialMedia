@@ -9,10 +9,13 @@ public class FriendFace
     public SignUp SignUp = new SignUp();
     public PasswordHandler passwordHandler = new PasswordHandler();
     public FriendHandler friendHandler = new FriendHandler();
-    public TempData TempData = new TempData();
+    public TempData TempData { get; set; }
+    public Search Search { get; set; }
 
     public FriendFace()
     {
+        Search = new Search(this);
+        TempData = new TempData();
         tempHelperFunction();
         Run();
     }

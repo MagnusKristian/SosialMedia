@@ -45,11 +45,11 @@ public class Profile
     }
     public Profile(Profile profile)
     {
-        UserName = Name;
+        UserName = profile.Name;
         Name = profile.Name;
         Password = profile.Password;
         Address = string.Empty;
-        Description = $"{Name}'s description: ";
+        Description = $"{profile.Name}'s description: ";
         Friends = new List<Profile>();
         Id = Guid.NewGuid();
         PendingFriendRequest = false;
@@ -76,8 +76,12 @@ public class Profile
     {
         return Friends;
     }
+
+
+    //TODO: move this out of profile
     public void AddFriend(Profile friendToAdd,FriendFace friendFace)
     {
+        
         if (friendToAdd == null) { return; }
         if (friendToAdd.Name == Name) { Console.WriteLine("You cant be friends with yourself..."); return; }
         if(Friends.Contains(friendToAdd)){ Console.WriteLine("Error, user is already a friend, try again!"); return;}

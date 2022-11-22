@@ -2,12 +2,13 @@
 
 public class FriendHandler
 {
-    public void SendFriendRequest(Profile currenProfile, Profile newFriend)
+    public void SendFriendRequest(Profile currentProfile, Profile newFriend)
     {
-        newFriend.PendingFriends.Add(currenProfile);
+        newFriend.PendingFriends.Add(currentProfile);
         newFriend.PendingFriendRequest = true;
-        currenProfile.SentPendingFriends.Add(newFriend);
-        currenProfile.SentPendingFriendRequest = true;
+        currentProfile.SentPendingFriends.Add(newFriend);
+        currentProfile.SentPendingFriendRequest = true;
+        Console.WriteLine($"{currentProfile.Name} just sent a friend request to {newFriend.Name}");
     }
     public void AcceptFriendRequest(FriendFace friendFace,Profile newFriend)
     {

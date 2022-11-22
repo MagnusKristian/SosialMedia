@@ -9,7 +9,7 @@ public class SignUp
         bool duplicate = CheckForDuplicateUser(friendFace,userName);
         while (duplicate== true)
         {
-            Console.WriteLine("Try again: ");
+            Console.WriteLine($"Name '{userName}' is taken, Try again: ");
             userName = Console.ReadLine();
             duplicate = CheckForDuplicateUser(friendFace,userName);
         }
@@ -18,7 +18,7 @@ public class SignUp
     }
     public void WelcomePrompt(FriendFace friendFace)
     {
-        Profile newProfile = new Profile(signUp(friendFace));
+        Profile newProfile = signUp(friendFace);
         friendFace.ListOfAllUsers.Add(newProfile);
         friendFace.SetCurrentUser(newProfile);
     }

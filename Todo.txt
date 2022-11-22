@@ -22,9 +22,7 @@ fix profile pages appearence
 
 Add friend option on peoples profile pages
 
-make a list of sent pending friend requests & fix removing from list after accept/decline //--------------------------
-
-display if you have sent people friend request on their profile pages
+display if you have sent people friend request on their profile pages 
 
 fix menus, get navigation with arrows implemented
 

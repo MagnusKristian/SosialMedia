@@ -18,6 +18,7 @@ public class Menu
             Console.WriteLine("6. Sign out: ");
             Console.WriteLine("7. View your own profile: ");
             Console.WriteLine("8. View friend requests: ");
+            Console.WriteLine("9. Search: ");
 
             Console.WriteLine("10. Debug show current user: ");
             Console.WriteLine("11. Debug show all users: ");
@@ -25,8 +26,8 @@ public class Menu
 
             Console.WriteLine("--------------------------------------------------");
             Console.WriteLine($"");
+            Console.WriteLine("Type in the number of your choice: ");
 
-            
             if (friendFace.GetCurrentUser().PendingFriendRequest)
             {
                 Console.WriteLine($"You have {friendFace.GetCurrentUser().PendingFriends.Count} friend requests.");
@@ -93,6 +94,11 @@ public class Menu
                     Console.Clear();
                     Console.WriteLine("8");
                     friendFace.friendHandler.ShowFriendRequests(friendFace);
+                    break;
+                case "9":
+                    Console.Clear();
+                    Console.WriteLine("9");
+                    friendFace.Search.SearchForName();
                     break;
 
                 case "10":
