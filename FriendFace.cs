@@ -3,7 +3,7 @@
 public class FriendFace
 {
     public List<Profile> ListOfAllUsers { get; set; }
-    public Profile? CurrentProfile { get; set; } = new Profile("ERROR-USER-SHOULDNT SHOW UP/fix later");
+    public Profile? CurrentProfile { get; set; } = new Profile("ERROR-USER-SHOULDNT SHOW UP/fix later");//TODO: fix this.
     public Menu Menu = new Menu();
     public Login Login = new Login();
     public SignUp SignUp = new SignUp();

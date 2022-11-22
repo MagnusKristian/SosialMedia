@@ -1,0 +1,39 @@
+﻿TODO: friendface
+
+find name for project (ONCEOVER?)
+
+figure out functionality to add
+
+fix login with username
+
+make usernames public, private/protected for everything else
+
+add "x" to exit in appropriate menus
+
+maybe add some functionality on password attempts(timeout/reset/forgotten)
+
+add database, local storage or use api
+
+explore using a GUI or rewrite to MVC web app
+
+consider making this a react-app
+
+fix showFriendRequests for loop
+
+fix profile pages appearence
+
+Add friend option on peoples profile pages
+
+make a list of sent pending friend requests & fix removing from list after accept/decline
+
+display if you have sent people friend request on their profile pages
+
+fix menus, get navigation with arrows implemented
+
+add search for user functionality, ListOfAllUsers.contains?? feks fornavn/etternavn
+
+add last names to temp-database
+
+make it more object oriented
+
+clean up code
