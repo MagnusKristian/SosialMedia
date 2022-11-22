@@ -6,6 +6,9 @@ public class Menu
     {
         while (true)
         {
+            Console.WriteLine($"");
+            Console.WriteLine("--------------------------------------------------");
+            
             Console.WriteLine("\n Main menu, here are your choices: ");
             Console.WriteLine("1. Add friend: ");
             Console.WriteLine("2. Remove friend: ");
@@ -13,10 +16,14 @@ public class Menu
             Console.WriteLine("4. Choose a friend and view their profile: ");
             Console.WriteLine("5. Settings: ");
             Console.WriteLine("6. Sign out: ");
-            Console.WriteLine("7. Debug show current user: ");
-            Console.WriteLine("8. Debug show all users: ");
-            Console.WriteLine("9. View friend requests: ");
-            Console.WriteLine("-----------------------------");
+            Console.WriteLine("7. View your own profile: ");
+            Console.WriteLine("8. View friend requests: ");
+
+            Console.WriteLine("10. Debug show current user: ");
+            Console.WriteLine("11. Debug show all users: ");
+            Console.WriteLine("12. Show sent pending friend requests: ");
+
+            Console.WriteLine("--------------------------------------------------");
             Console.WriteLine($"");
 
             
@@ -37,32 +44,36 @@ public class Menu
                     Console.WriteLine("1");
                     Console.WriteLine("Add friend: ");
                     friendFace.GetCurrentUser().AddFriend(CheckForFriendInDatabase(friendFace.GetAllUsers()),friendFace);
-                    Console.Clear();
                     break;
+
                 case "2":
                     Console.Clear();
                     Console.WriteLine("2");
                     Console.WriteLine("Remove friend: ");
-                    friendFace.GetCurrentUser().RemoveFriend(CheckForFriendInDatabase(friendFace.GetAllUsers()), friendFace.GetCurrentUser());
+                    friendFace.GetCurrentUser().RemoveFriend(CheckForFriendInDatabase(friendFace.GetAllUsers()));
                     break;
+
                 case "3":
                     Console.Clear();
                     Console.WriteLine("3");
                     Console.WriteLine("View all your friends: ");
                     friendFace.GetCurrentUser().DisplayFriends();
                     break;
+
                 case "4":
                     Console.Clear();
                     Console.WriteLine("4");
                     Console.WriteLine("Choose a friend and view their profile: ");
                     friendFace.GetCurrentUser().ShowProfile(CheckForFriendInDatabase(friendFace.GetAllUsers()));
                     break;
+
                 case "5":
                     Console.Clear();
                     Console.WriteLine("5");
                     Console.WriteLine("Settings");
                     Settings(friendFace);
                     break;
+
                 case "6":
                     Console.Clear();
                     Console.WriteLine("6");
@@ -70,23 +81,41 @@ public class Menu
 
                     SignOut(friendFace);
                     break;
+
                 case "7":
                     Console.Clear();
                     Console.WriteLine("7");
-                    Console.WriteLine($"CURRENT USER IS: {friendFace.GetCurrentUser().Name}");
+                    friendFace.GetCurrentUser().ShowProfile(friendFace.GetCurrentUser());
                     Console.ReadLine();
-                    
                     break;
+
                 case "8":
                     Console.Clear();
                     Console.WriteLine("8");
-                    friendFace.ShowAllUsers();
-                    break;
-                case "9":
-                    Console.Clear();
-                    Console.WriteLine("9");
                     friendFace.friendHandler.ShowFriendRequests(friendFace);
                     break;
+
+                case "10":
+                    Console.Clear();
+                    Console.WriteLine("10");
+                    Console.WriteLine($"CURRENT USER IS: {friendFace.GetCurrentUser().Name}");
+                    Console.ReadLine();
+                    break;
+
+                case "11":
+                    Console.Clear();
+                    Console.WriteLine("11");
+                    friendFace.ShowAllUsers();
+                    break;
+
+                case "12":
+                    Console.Clear();
+                    Console.WriteLine("12");
+                    friendFace.friendHandler.ShowSentFriendRequests(friendFace);
+                    break;
+                    
+
+
                 default:
                     break;
             }
@@ -165,8 +194,7 @@ public class Menu
         {
             Console.WriteLine("Type in the name here: ");
             string friendName = Console.ReadLine();
-            if (friendName.ToLower() == "x"){continue;}
-            //TODO: BUG-cannot exit without giving a valid username.
+            if (friendName.ToLower() == "x"){break;}
             foreach (var profile in allUserProfiles)
             {
                if (profile.Name.ToLower() == friendName.ToLower())

@@ -9,6 +9,7 @@ public class AddExampleUsers
         Users = new List<Profile>();
         Users.Add(new Profile("Magnus"));
         Users.Add(new Profile("Marie"));
+        Users.Add(new Profile("FriendlessPerson"));
         Users.Add(new Profile("Terje"));
         Users.Add(new Profile("Eskil"));
         Users.Add(new Profile("Linn"));
@@ -20,6 +21,8 @@ public class AddExampleUsers
         Users.Add(new Profile("Kristian B"));
         Users.Add(new Profile("Erik"));
         Users.Add(new Profile("Viktor"));
+        
+
         return Users;
     }
 }

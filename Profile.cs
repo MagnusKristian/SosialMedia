@@ -71,39 +71,40 @@ public class Profile
     {
         return UserName;
     }
+
+    public List<Profile> GetAllFriends()
+    {
+        return Friends;
+    }
     public void AddFriend(Profile friendToAdd,FriendFace friendFace)
     {
-        if (friendToAdd == null) { Console.WriteLine("Error, user not found, try again!"); return; }
-
+        if (friendToAdd == null) { return; }
         if (friendToAdd.Name == Name) { Console.WriteLine("You cant be friends with yourself..."); return; }
         if(Friends.Contains(friendToAdd)){ Console.WriteLine("Error, user is already a friend, try again!"); return;}
         if(SentPendingFriends.Contains(friendToAdd)){ Console.WriteLine($"You have already sent a friend request to '{friendToAdd.Name}'"); return;}
         if (PendingFriends.Contains(friendToAdd)) { Console.WriteLine($"You already have a pending friend request from {friendToAdd.Name}, go accept or decline."); return; }
-
         friendFace.friendHandler.SendFriendRequest(this,friendToAdd);
-        
-        //Friends.Add(friendToAdd);
-        //Console.WriteLine($"{Name} is now friends with {friendToAdd.Name}");
-        ////add the user to the friends list also
-        ////friendToAdd.AddFriend(friendFace.GetCurrentUser(), friendFace);
-        //friendToAdd.Friends.Add(this);
-        ////friendToAdd.Friends.Add(friendFace.GetCurrentUser());
-        //Console.WriteLine($"{friendToAdd.Name} is now friends with {Name}");
     }
-    public void RemoveFriend(Profile friendToRemove, Profile userRemovingFriend)
+    public void RemoveFriend(Profile friendToRemove)
     {
-        if(friendToRemove == null){ Console.WriteLine("Error, user not found, try again!"); return;}
+        if (friendToRemove == null) { return; }
+
+        if (friendToRemove == null){ Console.WriteLine("Error, user not found, try again!"); return;}
+        //fjern den over.?
 
         if (Friends.Contains(friendToRemove))
         {
             Friends.Remove(friendToRemove);
             Console.WriteLine($"{Name} is no longer friends with {friendToRemove.Name}");
             //Remove the user from the friends list also
-            friendToRemove.Friends.Remove(userRemovingFriend);
+            if (friendToRemove.GetAllFriends().Contains(this))
+            {
+                friendToRemove.RemoveFriend(this);
+            }
         }
         else
         {
-            Console.WriteLine($"Error. '{userRemovingFriend.Name}' is not currently friends with '{friendToRemove.Name}'");
+            Console.WriteLine($"Error. '{this.Name}' is not currently friends with '{friendToRemove.Name}'");
         }
     }
     public void DisplayFriends()

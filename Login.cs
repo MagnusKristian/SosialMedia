@@ -76,7 +76,7 @@ public class Login
 
                                 //TODO:For testing. Remove later ------------
                                 //friendFace.ListOfAllUsers.Add(new Profile("Example new friends name1"));
-                                friendFace.ListOfAllUsers[1].AddFriend(friendFace.ListOfAllUsers[0],friendFace);
+                                //friendFace.ListOfAllUsers[1].AddFriend(friendFace.ListOfAllUsers[0],friendFace);
                                 //if (friendFace.GetCurrentUser().Name.ToLower() == "Magnus".ToLower())
                                 //{
                                 //friendFace.ListOfAllUsers[1].AddFriend(friendFace.ListOfAllUsers[0],friendFace);

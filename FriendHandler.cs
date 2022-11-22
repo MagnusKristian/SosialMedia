@@ -21,6 +21,7 @@ public class FriendHandler
         }
         //adds this user to friend
         newFriend.Friends.Add(friendFace.GetCurrentUser());
+        //for testing(cw under)
         Console.WriteLine($"{newFriend.Name} is now friends with {friendFace.GetCurrentUser().Name}.");
         newFriend.SentPendingFriends.Remove(friendFace.GetCurrentUser());
         if (newFriend.SentPendingFriends.Count<1)

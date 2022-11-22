@@ -16,15 +16,13 @@ add database, local storage or use api
 
 explore using a GUI or rewrite to MVC web app
 
-consider making this a react-app
-
-fix showFriendRequests for loop
+consider making this a react-app 
 
 fix profile pages appearence
 
 Add friend option on peoples profile pages
 
-make a list of sent pending friend requests & fix removing from list after accept/decline
+make a list of sent pending friend requests & fix removing from list after accept/decline //--------------------------
 
 display if you have sent people friend request on their profile pages
 

@@ -9,6 +9,7 @@ public class FriendFace
     public SignUp SignUp = new SignUp();
     public PasswordHandler passwordHandler = new PasswordHandler();
     public FriendHandler friendHandler = new FriendHandler();
+    public TempData TempData = new TempData();
 
     public FriendFace()
     {
@@ -21,8 +22,8 @@ public class FriendFace
         AddExampleUsers AddUsers = new AddExampleUsers();
         ListOfAllUsers = AddUsers.AddUsers();
         //legger til alle på friendface i vennelista til "magnus".
-        // 2 for hoppe over "magnus" og "marie"-
-        for (int i = 2; i < ListOfAllUsers.Count; i++)
+        // 3 for hoppe over "magnus" og "marie"- og "FriendlessPerson"
+        for (int i = 3; i < ListOfAllUsers.Count; i++)
         {
             ListOfAllUsers[0].Friends.Add(ListOfAllUsers[i]);
             ListOfAllUsers[i].Friends.Add(ListOfAllUsers[0]);
