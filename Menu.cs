@@ -162,9 +162,9 @@ public class Menu
         switch (choice)
         {
             case "1":
-                Console.WriteLine("1. Change Name.");
+                Console.WriteLine("1. Change Name.(first name)");
                 Console.WriteLine("does not work yet.");
-
+                friendFace.ProfileHandler.ChangeFirstName(friendFace);
                 break;
             case "2":
                 Console.WriteLine("2. Change Password.");
@@ -172,7 +172,8 @@ public class Menu
                 break;
             case "3":
                 Console.WriteLine("3. Change Username");
-                Console.WriteLine("does not work yet.");
+                friendFace.ProfileHandler.ChangeUsername(friendFace);
+
 
                 break;
             case "4":

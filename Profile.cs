@@ -7,12 +7,12 @@ public class Profile
     public Guid Id { get; set; }
     public string Name { get; set; }
     public string UserName { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string ImageURL { get; set; }
-    public string Email { get; set; }
+    private string FirstName { get; set; }
+    private string LastName { get; set; }
+    private string ImageURL { get; set; }
+    private string Email { get; set; }
     private string Password { get; set; }
-    public string Address { get; set; }
+    private string Address { get; set; }
     public string Description { get; set; }
     public List<Profile> Friends { get; set; }
     public List<Profile> PendingFriends { get; set; }
@@ -25,6 +25,7 @@ public class Profile
         Name = name;
         //TODO: remove this and fix login with username
         UserName = Name;
+        FirstName = Name;
         //
         Password = password;
         Address = string.Empty;
@@ -39,14 +40,11 @@ public class Profile
         Console.WriteLine($"Welcome to FriendFace, {Name}!");
         Console.WriteLine();
     }
-    public string GetPassword()
-    {
-        return Password;
-    }
     public Profile(Profile profile)
     {
         UserName = profile.Name;
         Name = profile.Name;
+        FirstName = profile.Name;
         Password = profile.Password;
         Address = string.Empty;
         Description = $"{profile.Name}'s description: ";
@@ -56,6 +54,20 @@ public class Profile
         PendingFriends = new List<Profile>();
         SentPendingFriends = new List<Profile>();
         SentPendingFriendRequest = false;
+    }
+    //-----------
+    public void SetFirstName(string firstName)
+    {
+        FirstName = firstName;
+    }
+    public string GetFirstName()
+    {
+        return FirstName;
+    }
+
+    public string GetPassword()
+    {
+        return Password;
     }
     public void SetPassword(string newPassword)
     {
@@ -155,6 +167,9 @@ public class Profile
         }
         Console.WriteLine($"* Name: {user.Name}".PadRight(29,' ')+"*");
         Console.WriteLine("*                            *");
+        Console.WriteLine($"* FirstName: {user.GetFirstName()}".PadRight(29, ' ') + "*");
+        Console.WriteLine("*                            *");
+
         Console.WriteLine($"* {user.Description}".PadRight(29, ' ') + "*");
         Console.WriteLine("*                            *");          
         Console.WriteLine($"* {user.Name}'s Friends: ".PadRight(29, ' ') + "*");

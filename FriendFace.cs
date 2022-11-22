@@ -9,6 +9,7 @@ public class FriendFace
     public SignUp SignUp = new SignUp();
     public PasswordHandler passwordHandler = new PasswordHandler();
     public FriendHandler friendHandler = new FriendHandler();
+    public ProfileHandler ProfileHandler = new ProfileHandler();
     public TempData TempData { get; set; }
     public Search Search { get; set; }
 
