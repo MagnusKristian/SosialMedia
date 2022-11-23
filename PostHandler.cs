@@ -89,24 +89,39 @@ public class PostHandler
             lineStrings = new string[numOfLinesNeeded];
             int lineStart = 0;
             int lineLength = 35;
-            for (int i = 1; i < numOfLinesNeeded; i++)
+            for (int i = 0; i < numOfLinesNeeded; i++)
             {
                 
-                if (numOfLinesNeeded > i+1)
+                if (i+1 >= numOfLinesNeeded)
                 {
                     lineStrings[i] = postText.Substring(lineStart);
-                    lineStart += 36;
+                    Console.WriteLine($"if{i}");
                 }
-
-                if (i + 1 < numOfLinesNeeded)
+                else
                 {
+                    Console.WriteLine($"else{i}");
                     lineStrings[i] = postText.Substring(lineStart, lineLength);
+                    lineStart += 35;
+                    Console.WriteLine($"AFTER else{i}");
+
                 }
-                
+                Console.WriteLine($"in for {i}");
+
+                //if (i < numOfLinesNeeded)
+                //{
+                //    lineStrings[i] = postText.Substring(lineStart, lineLength);
+                //    lineStart += 36;
+                //}
+
             }
+
+            Console.WriteLine("finito");
+            int counter = 0;
             foreach (var line in lineStrings)
             {
                 Console.WriteLine($"{(star + space + line).PadRight(39, ' ') + star}");
+                counter++;
+                Console.WriteLine(counter.ToString());
             }
         }
     }
