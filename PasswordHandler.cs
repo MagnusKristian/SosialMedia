@@ -2,46 +2,53 @@
 
 public class PasswordHandler
 {
-    public bool passwordHandler(string password)
+    public bool passwordHandler(string password,FriendFace friendFace)
     {
         bool passwordIsGood = false;
-        //bool passIsOk = false;
         bool passLengthOverEight = false;
         bool containsNumber = false;
         bool containsLetter = false;
-        //bool containsSign = false; //-
+        bool containsSign = false;
         bool containsUpper = false;
         bool containsLower = false;
-        //bool doesNotContainName = false; //-
-        //bool differentFromPrevPass = false; //-
+        bool doesNotContainName = false; 
+        bool differentFromPrevPass = false; 
         if (password.Length < 8) { Console.WriteLine("Password does not contain 8 or more characters."); }
         if (password.Length >= 8) { passLengthOverEight = true; }
         foreach (var character in password)
         {
             if (char.IsDigit(character)) { containsNumber = true; }
             if (char.IsLetter(character)) { containsLetter = true; }
-            //
-            //if (char.IsSymbol(character)) { containsSign = true; }
-            //
+            if(!char.IsLetterOrDigit(character)) { containsSign = true; }
             if (char.IsUpper(character)) { containsUpper = true; }
             if (char.IsLower(character)) { containsLower = true; }
         }
+
+        if (!password.Contains(friendFace.GetCurrentUser().GetPassword()))
+        {
+            differentFromPrevPass = true;
+        }
+        if (!password.ToLower().Contains(friendFace.GetCurrentUser().GetFirstName().ToLower()))
+        {
+            doesNotContainName = true;
+        }
         if (containsNumber == false) { Console.WriteLine("Password does not contain number"); }
         if (containsLetter == false) { Console.WriteLine("Password does not contain letter"); }
-        //if (containsSign == false) { Console.WriteLine("Password does not contain sign"); }
+        if (containsSign == false) { Console.WriteLine("Password does not contain sign character"); }
         if (containsUpper == false) { Console.WriteLine("Password does not contain uppercase letter"); }
         if (containsLower == false) { Console.WriteLine("Password does not contain lowercase letter"); }
-        //if (doesNotContainName == false) { Console.WriteLine("Password does not differ from name"); }
-        //if (differentFromPrevPass == false) { Console.WriteLine("Password does not differ from previous password"); }
+        if (doesNotContainName == false) { Console.WriteLine("Password does not differ from name"); }
+        if (differentFromPrevPass == false) { Console.WriteLine("Password does not differ from previous password,or contains parts of it."); }
         if (
             passLengthOverEight &&
             containsNumber &&
             containsLetter &&
-            /*containsSign &&*/
+            containsSign &&
             containsUpper &&
-            containsLower /*&&
-            doesNotContainName &&*/
-            /*differentFromPrevPass*/)
+            containsLower &&
+            doesNotContainName && 
+            differentFromPrevPass
+            )
         {
             passwordIsGood = true;
         }
@@ -62,10 +69,10 @@ public class PasswordHandler
         bool goodPass = false;
         while (goodPass == false)
         {
-            goodPass = passwordHandler(password);
+            goodPass = passwordHandler(password,friendFace);
             if (goodPass == false)
             {
-                Console.WriteLine("Try again dude.");
+                Console.WriteLine("Try again...");
                 password = Console.ReadLine();
             }
         }
@@ -73,7 +80,6 @@ public class PasswordHandler
         {
             friendFace.GetCurrentUser().SetPassword(password);
             Console.WriteLine($"New password is: '{friendFace.GetCurrentUser().GetPassword()}'");
-            return;
         }
     }
 }

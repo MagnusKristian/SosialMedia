@@ -10,11 +10,14 @@ public class FriendFace
     public PasswordHandler passwordHandler = new PasswordHandler();
     public FriendHandler friendHandler = new FriendHandler();
     public ProfileHandler ProfileHandler = new ProfileHandler();
+    public PostHandler PostHandler { get; set; }
+    public SocialPage SocialPage = new SocialPage();
     public TempData TempData { get; set; }
     public Search Search { get; set; }
 
     public FriendFace()
     {
+        PostHandler = new PostHandler(this);
         Search = new Search(this);
         TempData = new TempData();
         tempHelperFunction();
@@ -32,6 +35,8 @@ public class FriendFace
             ListOfAllUsers[0].Friends.Add(ListOfAllUsers[i]);
             ListOfAllUsers[i].Friends.Add(ListOfAllUsers[0]);
         }
+
+        new AddExamplePosts(this);
 
         //Console.Clear();
         //Console.WriteLine("\nPROGRAM STARTED:THE ABOVE IS TEMPORARY AND SHOULD NOT BE SHOWN IN FINISHED PRODUCT.\n");

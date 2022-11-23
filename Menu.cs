@@ -19,10 +19,11 @@ public class Menu
             Console.WriteLine("7. View your own profile: ");
             Console.WriteLine("8. View friend requests: ");
             Console.WriteLine("9. Search: ");
+            Console.WriteLine("10. Display posts: ");
 
-            Console.WriteLine("10. Debug show current user: ");
-            Console.WriteLine("11. Debug show all users: ");
-            Console.WriteLine("12. Show sent pending friend requests: ");
+            Console.WriteLine("22. Debug show current user: ");
+            Console.WriteLine("23. Debug show all users: ");
+            Console.WriteLine("24. Show sent pending friend requests: ");
 
             Console.WriteLine("--------------------------------------------------");
             Console.WriteLine($"");
@@ -100,23 +101,30 @@ public class Menu
                     Console.WriteLine("9");
                     friendFace.Search.SearchForName();
                     break;
-
                 case "10":
                     Console.Clear();
                     Console.WriteLine("10");
+                    friendFace.PostHandler.DisplayPosts();
+                    break;
+
+                //----------------- FOR TESTING & DEBUGGING
+
+                case "22":
+                    Console.Clear();
+                    Console.WriteLine("22");
                     Console.WriteLine($"CURRENT USER IS: {friendFace.GetCurrentUser().Name}");
                     Console.ReadLine();
                     break;
 
-                case "11":
+                case "23":
                     Console.Clear();
-                    Console.WriteLine("11");
+                    Console.WriteLine("23");
                     friendFace.ShowAllUsers();
                     break;
 
-                case "12":
+                case "24":
                     Console.Clear();
-                    Console.WriteLine("12");
+                    Console.WriteLine("24");
                     friendFace.friendHandler.ShowSentFriendRequests(friendFace);
                     break;
                     
