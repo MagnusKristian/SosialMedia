@@ -171,7 +171,7 @@ public class Menu
         {
             case "1":
                 Console.WriteLine("1. Change Name.(first name)");
-                Console.WriteLine("does not work yet.");
+                Console.WriteLine("Works for first name only.");
                 friendFace.ProfileHandler.ChangeFirstName(friendFace);
                 break;
             case "2":
