@@ -81,11 +81,12 @@ public class PostHandler
             string[] lineStrings;
             for (var i = 1; i < 10; i++)
             {
-                if (postText.Length / i > 36)
+                if (postText.Length / i >= 36)
                 {
                     numOfLinesNeeded++;
                 }
             }
+
             lineStrings = new string[numOfLinesNeeded];
             int lineStart = 0;
             int lineLength = 35;
@@ -95,33 +96,16 @@ public class PostHandler
                 if (i+1 >= numOfLinesNeeded)
                 {
                     lineStrings[i] = postText.Substring(lineStart);
-                    Console.WriteLine($"if{i}");
                 }
                 else
                 {
-                    Console.WriteLine($"else{i}");
                     lineStrings[i] = postText.Substring(lineStart, lineLength);
                     lineStart += 35;
-                    Console.WriteLine($"AFTER else{i}");
-
                 }
-                Console.WriteLine($"in for {i}");
-
-                //if (i < numOfLinesNeeded)
-                //{
-                //    lineStrings[i] = postText.Substring(lineStart, lineLength);
-                //    lineStart += 36;
-                //}
-
             }
-
-            Console.WriteLine("finito");
-            int counter = 0;
             foreach (var line in lineStrings)
             {
                 Console.WriteLine($"{(star + space + line).PadRight(39, ' ') + star}");
-                counter++;
-                Console.WriteLine(counter.ToString());
             }
         }
     }
