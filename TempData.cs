@@ -13,6 +13,18 @@ public class TempData
         AddAllUserNames();
     }
 
+    //public void UpdateUserData(Profile user)
+    //{
+    //    List<Profile> users = GetAllUsers();
+    //    for (int i = 0; i < users.Count; i++)
+    //    {
+    //        if (user.Id == users[i].Id)
+    //        {
+    //            users.RemoveAt(i);
+    //            users.Insert(i, user);
+    //        }
+    //    }
+    //}
     public void AddAllUsersToTempDatabaseViaApi()
     {
         //something something

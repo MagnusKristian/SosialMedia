@@ -209,20 +209,43 @@ public class Menu
         Profile ChosenFriend = null;
         while (ChosenFriend == null)
         {
+
             Console.WriteLine("Type in the name here: ");
             string friendName = Console.ReadLine();
             if (friendName.ToLower() == "x"){break;}
+            bool wentThroughUsers = false;
+            //if (wentThroughUsers)
+            //{
+            //    break;
+            //}
             foreach (var profile in allUserProfiles)
             {
-               if (profile.Name.ToLower() == friendName.ToLower())
-               {
-                   ChosenFriend = profile;
-               }
+                //TODO: fix this. profile.Name??
+                if (profile.Name.ToLower().Contains(friendName.ToLower()))
+                {
+                    Console.WriteLine($"Did you mean: {profile.Name}?");
+                    Console.WriteLine($"1.YES \n2.NO");
+                    string yesOrNO = Console.ReadLine();
+                    if (yesOrNO == "1")
+                    {
+                        if (profile.Name.ToLower() == friendName.ToLower())
+                        {
+                            ChosenFriend = profile;
+                            return ChosenFriend;
+                        }
+                    }
+                    if (yesOrNO == "2")
+                    {
+                        continue;
+                    }
+                }
             }
             if (ChosenFriend == null)
             {
+                friendName = "x";
                 Console.WriteLine("Could not find user, try again...");
             }
+            if (friendName.ToLower() == "x") { break; }
         }
         return ChosenFriend;
     }
