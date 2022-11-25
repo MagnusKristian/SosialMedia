@@ -29,7 +29,7 @@ public class Profile
         FirstName = "'FirstName'";
         LastName = "'LastName'";
         SetFullNameToPropeties(Name);
-        UserName = FirstName + ("-" + Id.ToString()[^4..]); //FirstName;
+        UserName = FirstName + ("-" + Id.ToString()[^4..].ToLower()); //FirstName;
         //UserName = name;
         Status = "No status set";
         Password = "1234";

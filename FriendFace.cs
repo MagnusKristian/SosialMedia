@@ -27,20 +27,29 @@ public class FriendFace
         PostHandler = new PostHandler(this);
         Search = new Search(this);
         TempData = new TempData();
-        tempHelperFunction();
         Run();
+        tempHelperFunction();
+
     }
+
     public void tempHelperFunction()
     {
+        
+
         //"database" for alle brukerene på friendface
         AddExampleUsers AddUsers = new AddExampleUsers();
-        ListOfAllUsers = AddUsers.AddUsers();
+        //ListOfAllUsers = AddUsers.AddUsers();
+        foreach (var profile in AddUsers.AddUsers())
+        {
+            TempData.AddUserToDatabase(profile);
+        }
+
         //legger til alle på friendface i vennelista til "magnus".
         // 3 for hoppe over "magnus" og "marie"- og "FriendlessPerson"
-        for (int i = 3; i < ListOfAllUsers.Count; i++)
+        for (int i = 3; i < GetAllUsers().Count; i++)
         {
-            ListOfAllUsers[0].Friends.Add(ListOfAllUsers[i]);
-            ListOfAllUsers[i].Friends.Add(ListOfAllUsers[0]);
+            GetAllUsers()[0].Friends.Add(GetAllUsers()[i]);
+            GetAllUsers()[i].Friends.Add(GetAllUsers()[0]);
         }
 
         new AddExamplePosts(this);
@@ -55,7 +64,8 @@ public class FriendFace
     }
     public List<Profile> GetAllUsers()
     {
-        return this.ListOfAllUsers;
+        ListOfAllUsers = TempData.GetAllUsers();
+        return TempData.GetAllUsers();
     }
     public Profile GetCurrentUser()
     {

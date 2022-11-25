@@ -54,20 +54,20 @@ public class Login
             {
                 username = Console.ReadLine();
                 Console.Clear();
-                for (int i = 0; i < friendFace.ListOfAllUsers.Count; i++)
+                for (int i = 0; i < friendFace.GetAllUsers().Count; i++)
                 {
                     //TODO: remove after fixing login stuff:
-                    if (friendFace.ListOfAllUsers[i].GetUserName().ToLower().Contains(username.ToLower()))
+                    if (friendFace.GetAllUsers()[i].GetUserName().ToLower().Contains(username.ToLower()))
                     {
                         Console.WriteLine("THESE CW'S ARE TEMPORARY...");
-                        Console.WriteLine($"Did you mean {friendFace.ListOfAllUsers[i].GetUserName().ToLower()}");
-                        Console.WriteLine("Try that.");
+                        Console.WriteLine($"Did you mean '{friendFace.GetAllUsers()[i].GetUserName().ToLower()}'");
+                        Console.WriteLine($"({friendFace.GetAllUsers()[i].GetLastName()})");
                     }
-                    if (username.ToLower() == friendFace.ListOfAllUsers[i].GetUserName().ToLower())
+                    if (username.ToLower() == friendFace.GetAllUsers()[i].GetUserName().ToLower())
                     {
                         Console.Clear();
                         userFound = true;
-                        chosenUser = friendFace.ListOfAllUsers[i];
+                        chosenUser = friendFace.GetAllUsers()[i];
                         Console.WriteLine("What is your password?");
                         bool passOk = false;
                         while (passOk == false)

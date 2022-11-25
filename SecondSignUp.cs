@@ -19,7 +19,8 @@ public class SecondSignUp
     public void WelcomePrompt(FriendFace friendFace)
     {
         Profile newProfile = new Profile(signUp(friendFace));
-        friendFace.ListOfAllUsers.Add(newProfile);
+        //friendFace.ListOfAllUsers.Add(newProfile);
+        friendFace.TempData.AddUserToDatabase(newProfile);
         friendFace.SetCurrentUser(newProfile);
     }
     public bool CheckForDuplicateUser(FriendFace friendFace, string userName)
