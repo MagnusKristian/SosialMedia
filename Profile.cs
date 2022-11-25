@@ -4,6 +4,7 @@ namespace SosialMedia;
 
 public class Profile
 {
+    //public Guid Guid = new Guid();
     public Guid Id { get; set; }
     public string Name { get; set; }
     public string UserName { get; set; }
@@ -25,10 +26,11 @@ public class Profile
     //this needs to be fixed
     public Profile(string name = "Unknown")
     {
+        Id = Guid.NewGuid();
         Name = name;
         FirstName = "'FirstName'";
         LastName = "'LastName'";
-        UserName = name; //FirstName;
+        UserName = name + (Id.ToString()[^4..]); //FirstName;
         //SetFullNameToPropeties(name);
         Status = "No status set";
         Password = "1234";
@@ -36,7 +38,7 @@ public class Profile
         Description = $"{Name}'s description: ";
         ImageURL = "'ImageURL'";
         Email = "'Email'";
-        Id = Guid.NewGuid();
+        
         Friends = new List<Profile>();
         PendingFriends = new List<Profile>();
         SentPendingFriends = new List<Profile>();
@@ -44,7 +46,17 @@ public class Profile
         PendingFriendRequest = false;
 
         Console.WriteLine($"Welcome to FriendFace, {Name}!");
+        Console.WriteLine($"Username: {UserName}.");
         Console.WriteLine();
+    }
+
+    public void someOneAllreadyNamedName()
+    {
+        //TODO: this
+        if (true)
+        {
+            //(first)name+=1/i;
+        }
     }
 
     public void SetFullNameToPropeties(string name)

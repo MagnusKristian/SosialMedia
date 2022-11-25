@@ -7,21 +7,21 @@ public class AddExampleUsers
     public List<Profile> AddUsers()
     {
         Users = new List<Profile>();
-        Users.Add(new Profile("Magnus"));
-        Users.Add(new Profile("Marie"));
-        Users.Add(new Profile("FriendlessPerson"));
-        Users.Add(new Profile("Terje"));
-        Users.Add(new Profile("Eskil"));
-        Users.Add(new Profile("Linn"));
-        Users.Add(new Profile("Tommy"));
-        Users.Add(new Profile("Tom"));
-        Users.Add(new Profile("Marius"));
-        Users.Add(new Profile("Thorbjørn"));
-        Users.Add(new Profile("Kristian G"));
-        Users.Add(new Profile("Kristian B"));
-        Users.Add(new Profile("Erik"));
-        Users.Add(new Profile("Viktor"));
-        
+        Users.Add(new Profile("Magnus")); // "Magnus Sandholmen"
+        Users.Add(new Profile("Marie")); // "Marie Askjem"
+        Users.Add(new Profile("FriendlessPerson")); // "FriendlessPerson FriendlessPerson"
+        Users.Add(new Profile("Terje")); // "Terje Kolderup"
+        Users.Add(new Profile("Eskil")); // "Eskil Domben"
+        Users.Add(new Profile("Linn")); // "Linn Østgaard"
+        Users.Add(new Profile("Tommy")); // "Tommy Håvåg"
+        Users.Add(new Profile("Tom")); // "Tom Stenstad"
+        Users.Add(new Profile("Marius")); // "Marius Henriksen"
+        Users.Add(new Profile("Thorbjørn")); // "Thorbjørn Berglund"
+        Users.Add(new Profile("Kristian G")); // "Kristian1 Granaas"
+        Users.Add(new Profile("Kristian B")); // "Kristian2 Braathen"
+        Users.Add(new Profile("Erik")); // "Erik Vu"
+        Users.Add(new Profile("Viktor")); // "Viktor Bastnes"
+
 
         return Users;
     }
