@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SosialMedia", "SosialMedia.csproj", "{914DA23E-B649-4476-B47B-90613E9E3A8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SosialMedia", "SosialMedia.csproj", "{914DA23E-B649-4476-B47B-90613E9E3A8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SosialMediaTests", "..\SosialMediaTests\SosialMediaTests.csproj", "{A1DE96FC-FC02-452B-A76C-9AFA1AE0050F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{914DA23E-B649-4476-B47B-90613E9E3A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{914DA23E-B649-4476-B47B-90613E9E3A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{914DA23E-B649-4476-B47B-90613E9E3A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1DE96FC-FC02-452B-A76C-9AFA1AE0050F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1DE96FC-FC02-452B-A76C-9AFA1AE0050F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1DE96FC-FC02-452B-A76C-9AFA1AE0050F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1DE96FC-FC02-452B-A76C-9AFA1AE0050F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

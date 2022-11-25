@@ -17,7 +17,7 @@ public class AddExamplePosts
                 Console.WriteLine("-----"+textToAdd);
             }
             friendFace.SocialPage.Posts.Add(new Post(ExampleUsers[i], textToAdd));
-            Thread.Sleep(1000);
+            Thread.Sleep(200);
             Console.WriteLine(i);
             Console.WriteLine("1 second intervals on adding exampleusers");
         }

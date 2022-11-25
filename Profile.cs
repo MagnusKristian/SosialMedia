@@ -14,37 +14,84 @@ public class Profile
     private string Password { get; set; }
     private string Address { get; set; }
     public string Description { get; set; }
+    public string Status { get; set; }
     public List<Profile> Friends { get; set; }
     public List<Profile> PendingFriends { get; set; }
     public List<Profile> SentPendingFriends { get; set; }
     public bool SentPendingFriendRequest { get; set; }
     public bool PendingFriendRequest { get; set; }
 
-    public Profile(string name = "Unknown", string password = "1234")
+
+    //this needs to be fixed
+    public Profile(string name = "Unknown")
     {
         Name = name;
-        //TODO: remove this and fix login with username
-        UserName = Name;
-        FirstName = Name;
-        //
-        Password = password;
-        Address = string.Empty;
+        FirstName = "'FirstName'";
+        LastName = "'LastName'";
+        UserName = name; //FirstName;
+        //SetFullNameToPropeties(name);
+        Status = "No status set";
+        Password = "1234";
+        Address = "'Address'";
         Description = $"{Name}'s description: ";
-        Friends = new List<Profile>();
+        ImageURL = "'ImageURL'";
+        Email = "'Email'";
         Id = Guid.NewGuid();
-        PendingFriendRequest = false;
+        Friends = new List<Profile>();
         PendingFriends = new List<Profile>();
         SentPendingFriends = new List<Profile>();
         SentPendingFriendRequest = false;
+        PendingFriendRequest = false;
 
         Console.WriteLine($"Welcome to FriendFace, {Name}!");
         Console.WriteLine();
     }
+
+    public void SetFullNameToPropeties(string name)
+    {
+        //TODO: FUNKER IKKE, FIKS DET SNART.
+        string[] firstAndLastNames = SplitNameString(name);
+        
+        //FirstName = firstAndLastNames[0];
+        //LastName = firstAndLastNames[1];
+
+        SetFirstName(firstAndLastNames[0]);
+        SetLastName(firstAndLastNames[1]);
+    }
+    public string[] SplitNameString(string nameString)
+    {
+        string[] firstAndLastName = nameString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        if (firstAndLastName.Length > 2)
+        {
+            string[] multipleLastOrMiddleNames = new string[firstAndLastName.Length];
+            multipleLastOrMiddleNames[0] = firstAndLastName[0];
+            for (int i = 1; i < firstAndLastName.Length; i++)
+            {
+                if (i > 1)
+                {
+                    multipleLastOrMiddleNames[1] += (" " + firstAndLastName[i]);
+
+                }
+                else
+                {
+                    multipleLastOrMiddleNames[1] += firstAndLastName[i];
+
+                }
+
+            }
+            return multipleLastOrMiddleNames;
+        }
+        //string firstName = firstAndLastName[0];
+        //string lastName = firstAndLastName[1];
+        return firstAndLastName;
+    }
+    //this needs to be fixed
     public Profile(Profile profile)
     {
         UserName = profile.Name;
         Name = profile.Name;
         FirstName = profile.Name;
+        Status = "No status set";
         Password = profile.Password;
         Address = string.Empty;
         Description = $"{profile.Name}'s description: ";
@@ -55,7 +102,46 @@ public class Profile
         SentPendingFriends = new List<Profile>();
         SentPendingFriendRequest = false;
     }
+
+    public Profile()
+    {
+        //this is ok, but TODO: clean up.
+        UserName = "'UserName'";
+        Name = "'Name'";
+        FirstName = "'FirstName'";
+        LastName = "'LastName'";
+        Status = "No status set";
+        Password = "1234";
+        Address = "'Address'";
+        Description = $"{"'UserName'"}'s description: ";
+        ImageURL = "'ImageURL'";
+        Email = "'Email'";
+        Id = Guid.NewGuid();
+        Friends = new List<Profile>();
+        PendingFriends = new List<Profile>();
+        SentPendingFriends = new List<Profile>();
+        SentPendingFriendRequest = false;
+        PendingFriendRequest = false;
+    }
+
+
     //-----------
+    public void SetStatus(string status)
+    {
+        Status = status;
+    }
+    public string GetStatus()
+    {
+        return Status;
+    }
+    public void SetLastName(string lastName)
+    {
+        LastName = lastName;
+    }
+    public string GetLastName()
+    {
+        return LastName;
+    }
     public void SetFirstName(string firstName)
     {
         FirstName = firstName;
@@ -87,6 +173,15 @@ public class Profile
     public List<Profile> GetAllFriends()
     {
         return Friends;
+    }
+
+    public void SetDescription(string description)
+    {
+        Description = description;
+    }
+    public string GetDescription()
+    {
+        return Description;
     }
 
 

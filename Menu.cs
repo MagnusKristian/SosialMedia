@@ -164,7 +164,8 @@ public class Menu
         Console.WriteLine("3. Change Username");
         Console.WriteLine("4. Change Description");
         Console.WriteLine("5. Change Profile picture");
-        Console.WriteLine("6. EXIT.");
+        Console.WriteLine("6. Change Status");
+        Console.WriteLine("10. EXIT.");
         Console.WriteLine();
         string choice = Console.ReadLine();
         switch (choice)
@@ -181,20 +182,21 @@ public class Menu
             case "3":
                 Console.WriteLine("3. Change Username");
                 friendFace.ProfileHandler.ChangeUsername(friendFace);
-
-
                 break;
             case "4":
                 Console.WriteLine("4. Change Description");
                 Console.WriteLine("does not work yet.");
-
                 break;
             case "5":
                 Console.WriteLine("5. Change Profile picture");
                 Console.WriteLine("does not work yet.");
-
                 break;
             case "6":
+                Console.WriteLine("6. Change Status");
+                Console.WriteLine("does not work yet.");
+                friendFace.ProfileHandler.ChangeStatus(friendFace);
+                break;
+            case "10":
                 Console.WriteLine("exit.");
                 return;
                 break;

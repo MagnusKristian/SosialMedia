@@ -53,16 +53,40 @@ public class ProfileHandler
         Console.WriteLine($"Name changed successfully from '{oldName}' to '{friendFace.GetCurrentUser().GetFirstName()}'");
         
     }
-    public void ChangeLastName(Profile user, string newLastName)
+    public void ChangeLastName(FriendFace friendFace)
     {
         //user.SetFirstName(newName);
         Console.WriteLine("Does not work yet.");
+        string newLastName = ChangeHelper("last name");
+        friendFace.GetCurrentUser().SetLastName(newLastName);
+        Console.WriteLine($"{"Last name"} changed to: {friendFace.GetCurrentUser().GetLastName()}");
 
     }
-    public void ChangeDescription(Profile user, string newDescription)
+    public void ChangeStatus(FriendFace friendFace)
     {
-        //user.SetFirstName(newName);
-        Console.WriteLine("Does not work yet.");
+        //Console.WriteLine($"What do you want your new status to be?");
+        string newStatus = ChangeHelper("status");
+        friendFace.GetCurrentUser().SetStatus(newStatus);
+        Console.WriteLine($"{"Status"} changed to: {friendFace.GetCurrentUser().GetStatus()}");
+
+    }
+
+    public string ChangeHelper(string thingToChange)
+    {
+        Console.WriteLine($"What do you want your new {thingToChange} to be?");
+        string newThingChanged = Console.ReadLine();
+        if (newThingChanged.ToLower() == "x")
+        {
+            Console.WriteLine($"Exited, {thingToChange} was not updated.");
+            return null;
+        }
+
+        return newThingChanged;
+    }
+    public void ChangeDescription(FriendFace friendFace, string newDescription)
+    {
+        friendFace.GetCurrentUser().SetDescription(newDescription);
+        Console.WriteLine($"Description changed to: {friendFace.GetCurrentUser().GetDescription()}");
 
     }
     public void ChangeProfilePicture(Profile user, string newImgURL)
@@ -85,4 +109,24 @@ public class ProfileHandler
         }
         return userNameWasTaken;
     }
+
+
+    //public void UpdateProperty(string thingToUpdate)
+    //{
+    //    string nameOfThingToUpdate = thingToUpdate;
+    //    if(thingToUpdate == null){}
+    //    if(thingToUpdate == "name"){}
+
+    //    switch (thingToUpdate)
+    //    {
+    //        case "name": 
+    //            break;
+    //        case "password":
+    //            break;
+    //        default:
+    //            break;
+    //    }
+
+    //    Console.WriteLine($"Successfully updated '{thingToUpdate}' to: ''.");
+    //}
 }
