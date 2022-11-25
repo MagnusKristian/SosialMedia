@@ -26,10 +26,10 @@ public class FriendFace
     {
         PostHandler = new PostHandler(this);
         Search = new Search(this);
-        TempData = new TempData();
-        Run();
+        TempData = new TempData(this);
+        
         tempHelperFunction();
-
+        Run();
     }
 
     public void tempHelperFunction()
@@ -44,12 +44,13 @@ public class FriendFace
             TempData.AddUserToDatabase(profile);
         }
 
+        //ListOfAllUsers = TempData.GetAllUsers();
         //legger til alle på friendface i vennelista til "magnus".
         // 3 for hoppe over "magnus" og "marie"- og "FriendlessPerson"
-        for (int i = 3; i < GetAllUsers().Count; i++)
+        for (int i = 3; i < TempData.GetAllUsers().Count; i++)
         {
-            GetAllUsers()[0].Friends.Add(GetAllUsers()[i]);
-            GetAllUsers()[i].Friends.Add(GetAllUsers()[0]);
+            TempData.GetAllUsers()[0].Friends.Add(TempData.GetAllUsers()[i]);
+            TempData.GetAllUsers()[i].Friends.Add(TempData.GetAllUsers()[0]);
         }
 
         new AddExamplePosts(this);

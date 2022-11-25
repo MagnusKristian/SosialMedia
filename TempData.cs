@@ -3,14 +3,14 @@
 public class TempData
 {
     public List<string> AllUserNames { get; set; }
-    protected List<Profile> AllUsers { get; set; }
-    public TempData()
+    protected List<Profile> AllUsers { get; set; } = new List<Profile>();
+    public TempData(FriendFace friendFace)
     {
         AllUserNames = new List<string>();
 
         //AllUsers = new AddExampleUsers().Users;
-        AddAllUsersToTempDatabaseViaApi();
-        AddAllUserNames();
+        //AddAllUsersToTempDatabaseViaApi();
+        //AddAllUserNames();
     }
 
     //public void UpdateUserData(Profile user)
@@ -28,7 +28,8 @@ public class TempData
     public void AddAllUsersToTempDatabaseViaApi()
     {
         //something something
-        AllUsers = new AddExampleUsers().Users;
+        //AllUsers = new AddExampleUsers().Users;
+        //AllUsers = friendFace.ListOfAllUsers;
     }
     public List<Profile> GetAllUsers()
     {
