@@ -3,16 +3,23 @@
 public class FriendFace
 {
     public List<Profile> ListOfAllUsers { get; set; }
-    public Profile? CurrentProfile { get; set; } = new Profile("ERROR-USER-SHOULDNT SHOW UP/fix later");//TODO: fix this.
+    public Profile? CurrentProfile { get; set; } //= new Profile("ERROR-USER-SHOULDNT SHOW UP/fix later");//TODO: fix this.
     public Menu Menu = new Menu();
     public Login Login = new Login();
-    public SignUp SignUp = new SignUp();
+    //-
+    //public SignUp SignUp = new SignUp();
+    public SecondSignUp SignUp = new SecondSignUp();
+    //-
+
     public PasswordHandler passwordHandler = new PasswordHandler();
     public FriendHandler friendHandler = new FriendHandler();
     public ProfileHandler ProfileHandler = new ProfileHandler();
     public PostHandler PostHandler { get; set; }
     public SocialPage SocialPage = new SocialPage();
+    //
+    //swap tempdata for a database and use sql to get "real" data.
     public TempData TempData { get; set; }
+    //
     public Search Search { get; set; }
 
     public FriendFace()

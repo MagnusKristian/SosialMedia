@@ -10,7 +10,7 @@ public class Search
     }
     public void SearchForName()
     {
-        List<string> UserNames = FriendFace.TempData.GetAllUserNames(FriendFace);
+        List<string> Names = FriendFace.TempData.GetAllUserNames();
         //TEMPORARY FOR DEVELOPING SEARCH FUNCTIONALITY.
         string searchParameter = "";
         while (searchParameter != "x")
@@ -21,11 +21,11 @@ public class Search
             Console.Clear();
             if(searchParameter == "x"){return;}
             List<string> matches = new List<string>();
-            foreach (string UserName in UserNames)
+            foreach (string name in Names)
             {
-                if (UserName.ToLower().Contains(searchParameter))
+                if (name.ToLower().Contains(searchParameter))
                 {
-                    matches.Add(UserName);
+                    matches.Add(name);
                 }
             }
             Display(matches,searchParameter);

@@ -19,6 +19,7 @@ public class SignUp
     public void WelcomePrompt(FriendFace friendFace)
     {
         Profile newProfile = signUp(friendFace);
+        //friendFace.TempData.AllUsers.Add(newProfile);
         friendFace.ListOfAllUsers.Add(newProfile);
         friendFace.SetCurrentUser(newProfile);
     }
@@ -29,7 +30,7 @@ public class SignUp
         {
             if (name.Name.ToLower() == userName.ToLower())
             {
-                Console.WriteLine("username taken dude");
+                Console.WriteLine("Username taken, Try again...");
                 userNameWasTaken = true;
             }
         }

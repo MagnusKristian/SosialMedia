@@ -22,7 +22,36 @@ public class Profile
     public bool SentPendingFriendRequest { get; set; }
     public bool PendingFriendRequest { get; set; }
 
+    public Profile(string userName,string fullName)
+    {
+        Id = Guid.NewGuid();
+        Name = fullName;
+        FirstName = "'FirstName'";
+        LastName = "'LastName'";
+        SetFullNameToPropeties(Name);
+        UserName = FirstName + ("-" + Id.ToString()[^4..]); //FirstName;
+        //UserName = name;
+        Status = "No status set";
+        Password = "1234";
+        Address = "'Address'";
+        Description = $"{Name}'s description: ";
+        ImageURL = "'ImageURL'";
+        Email = "'Email'";
 
+        Friends = new List<Profile>();
+        PendingFriends = new List<Profile>();
+        SentPendingFriends = new List<Profile>();
+        SentPendingFriendRequest = false;
+        PendingFriendRequest = false;
+
+        Console.WriteLine($"Welcome to FriendFace, NAME: {Name}!");
+        Console.WriteLine($"Username: {UserName}.");
+        Console.WriteLine($"FirstName: {FirstName}.");
+        Console.WriteLine($"LastName: {LastName}.");
+
+
+        Console.WriteLine();
+    }
     //this needs to be fixed
     public Profile(string name = "Unknown")
     {
@@ -30,33 +59,38 @@ public class Profile
         Name = name;
         FirstName = "'FirstName'";
         LastName = "'LastName'";
-        UserName = name + (Id.ToString()[^4..]); //FirstName;
-        //SetFullNameToPropeties(name);
+        SetFullNameToPropeties(name);
+        UserName = FirstName + ("-" + Id.ToString()[^4..]); //FirstName;
+        //UserName = name;
         Status = "No status set";
         Password = "1234";
         Address = "'Address'";
         Description = $"{Name}'s description: ";
         ImageURL = "'ImageURL'";
         Email = "'Email'";
-        
+
         Friends = new List<Profile>();
         PendingFriends = new List<Profile>();
         SentPendingFriends = new List<Profile>();
         SentPendingFriendRequest = false;
         PendingFriendRequest = false;
 
-        Console.WriteLine($"Welcome to FriendFace, {Name}!");
+        Console.WriteLine($"Welcome to FriendFace, NAME: {Name}!");
         Console.WriteLine($"Username: {UserName}.");
+        Console.WriteLine($"FirstName: {FirstName}.");
+        Console.WriteLine($"LastName: {LastName}.");
+
+
         Console.WriteLine();
     }
 
-    public void someOneAllreadyNamedName()
+    public void someOneAllreadyNamedName(string firstName, string lastName)
     {
         //TODO: this
-        if (true)
-        {
-            //(first)name+=1/i;
-        }
+        //if ()
+        //{
+        //    //(first)name+=1/i;
+        //}
     }
 
     public void SetFullNameToPropeties(string name)
@@ -72,6 +106,11 @@ public class Profile
     }
     public string[] SplitNameString(string nameString)
     {
+        if (!nameString.Contains(' '))
+        {
+            string[] nameStringArray = { nameString,"NOLASTNAME" };
+            return nameStringArray;
+        }
         string[] firstAndLastName = nameString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         if (firstAndLastName.Length > 2)
         {
@@ -180,6 +219,15 @@ public class Profile
     public string GetUserName()
     {
         return UserName;
+    }
+    public void SetName(string name)
+    {
+        Name = name;
+    }
+
+    public string GetName()
+    {
+        return Name;
     }
 
     public List<Profile> GetAllFriends()
@@ -295,5 +343,15 @@ public class Profile
         Console.WriteLine("*                            *");
         Console.WriteLine("*                            *");
         Console.WriteLine("******************************");
+        Console.WriteLine();
+        if (user == this)
+        {
+            Console.WriteLine($"ID: {Id}");
+            Console.WriteLine($"Name: {Name}");
+            Console.WriteLine($"Username: {UserName}.");
+            Console.WriteLine($"FirstName: {FirstName}.");
+            Console.WriteLine($"LastName: {LastName}.");
+        }
+        
     }
 }

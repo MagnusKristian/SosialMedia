@@ -4,10 +4,18 @@ public class SecondSignUp
 {
     public Profile signUp(FriendFace friendFace)
     {
+        
         string userName = UserName(friendFace);
-        Profile newProfile = new Profile(userName);
+        string fullName = FullName();
+        Profile newProfile = new Profile(userName,fullName);
+        newProfile.SetFullNameToPropeties(fullName);
         return newProfile;
     }
+
+    //public void CreateUserPrompt(string userName, string fullname)
+    //{
+
+    //}
     public void WelcomePrompt(FriendFace friendFace)
     {
         Profile newProfile = new Profile(signUp(friendFace));
@@ -17,7 +25,7 @@ public class SecondSignUp
     public bool CheckForDuplicateUser(FriendFace friendFace, string userName)
     {
         bool userNameWasTaken = false;
-        foreach (var user in friendFace.GetAllUsers())
+        foreach (var user in friendFace.TempData.GetAllUsers())
         {
             if (user.UserName.ToLower() == userName.ToLower())
             {
@@ -40,6 +48,13 @@ public class SecondSignUp
             duplicate = CheckForDuplicateUser(friendFace, userName);
         }
         return userName;
+    }
+
+    public string FullName()
+    {
+        Console.WriteLine("Please enter your full name: ");
+        string FullName = Console.ReadLine();
+        return FullName;
     }
 
     public void FirstName()

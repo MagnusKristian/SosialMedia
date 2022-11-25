@@ -145,7 +145,7 @@ public class Menu
             if (yesOrNo == "1")
             {
                 Console.WriteLine("Signing out now...");
-                friendFace.CurrentProfile = new Profile("Error-user-Sign-out");
+                friendFace.CurrentProfile = null; //= new Profile("Error-user-Sign-out");
                 friendFace.Login.login(friendFace);
                 return;
             }

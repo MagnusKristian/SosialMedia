@@ -56,8 +56,16 @@ public class Login
                 Console.Clear();
                 for (int i = 0; i < friendFace.ListOfAllUsers.Count; i++)
                 {
+                    //TODO: remove after fixing login stuff:
+                    if (friendFace.ListOfAllUsers[i].GetUserName().ToLower().Contains(username.ToLower()))
+                    {
+                        Console.WriteLine("THESE CW'S ARE TEMPORARY...");
+                        Console.WriteLine($"Did you mean {friendFace.ListOfAllUsers[i].GetUserName().ToLower()}");
+                        Console.WriteLine("Try that.");
+                    }
                     if (username.ToLower() == friendFace.ListOfAllUsers[i].GetUserName().ToLower())
                     {
+                        Console.Clear();
                         userFound = true;
                         chosenUser = friendFace.ListOfAllUsers[i];
                         Console.WriteLine("What is your password?");

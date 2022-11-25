@@ -4,7 +4,8 @@
     {
         public static void Main(string[] args)
         {
-            FriendFace friendFace =  new FriendFace();
+            //FriendFace friendFace =  new FriendFace();
+            new FriendFace();
         }
     }
 }

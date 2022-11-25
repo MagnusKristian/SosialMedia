@@ -3,25 +3,41 @@
 public class TempData
 {
     public List<string> AllUserNames { get; set; }
-    public List<Profile> AllUsers { get; set; }
+    protected List<Profile> AllUsers { get; set; }
     public TempData()
     {
         AllUserNames = new List<string>();
-        AllUsers = new List<Profile>();
+
+        //AllUsers = new AddExampleUsers().Users;
+        AddAllUsersToTempDatabaseViaApi();
+        AddAllUserNames();
     }
 
-    public void AddAllUserNames(FriendFace friendFace)
+    public void AddAllUsersToTempDatabaseViaApi()
+    {
+        //something something
+        AllUsers = new AddExampleUsers().Users;
+    }
+    public List<Profile> GetAllUsers()
+    {
+        return AllUsers;
+    }
+    public void AddUserToDatabase(Profile profile)
+    {
+        AllUsers.Add(profile);
+    }
+    private void AddAllUserNames()
     {
         AllUserNames = new List<string>();
-        foreach (var profile in friendFace.GetAllUsers())
+        foreach (var profile in AllUsers)
         {
-            AllUserNames.Add(profile.GetUserName());
+            AllUserNames.Add(profile.GetName());
         }
     }
 
-    public List<string> GetAllUserNames(FriendFace friendFace)
+    public List<string> GetAllUserNames()
     {
-        AddAllUserNames(friendFace);
+        //AddAllUserNames();
         return AllUserNames;
     }
 }
