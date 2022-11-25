@@ -65,7 +65,7 @@ public class FriendFace
     }
     public List<Profile> GetAllUsers()
     {
-        ListOfAllUsers = TempData.GetAllUsers();
+        //ListOfAllUsers = TempData.GetAllUsers();
         return TempData.GetAllUsers();
     }
     public Profile GetCurrentUser()
@@ -74,9 +74,9 @@ public class FriendFace
     }
     public void ShowAllUsers()
     {
-        for (int i = 0; i < ListOfAllUsers.Count; i++)
+        for (int i = 0; i < GetAllUsers().Count; i++)
         {
-            Console.WriteLine($"Name: {ListOfAllUsers[i].Name}");
+            Console.WriteLine($"Name: {GetAllUsers()[i].Name}");
         }
     }
     public void SetCurrentUser(Profile user)
