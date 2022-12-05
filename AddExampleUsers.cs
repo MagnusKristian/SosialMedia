@@ -40,7 +40,6 @@ public class AddExampleUsers
         //Users.Add(new Profile("Erik")); // "Erik Vu"
         //Users.Add(new Profile("Viktor")); // "Viktor Bastnes"
 
-
         return Users;
     }
 }
