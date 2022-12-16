@@ -20,6 +20,7 @@ public class Menu
             Console.WriteLine("8. View friend requests: ");
             Console.WriteLine("9. Search: ");
             Console.WriteLine("10. Display posts: ");
+            Console.WriteLine("11. Create post: ");
 
             Console.WriteLine("22. Debug show current user: ");
             Console.WriteLine("23. Debug show all users: ");
@@ -105,6 +106,12 @@ public class Menu
                     Console.Clear();
                     Console.WriteLine("10");
                     friendFace.PostHandler.DisplayPosts();
+                    break;
+                case "11":
+                    Console.Clear();
+                    Console.WriteLine("11");
+                    friendFace.PostHandler.CreatePost(friendFace.GetCurrentUser(),
+                        friendFace.PostHandler.PromptForPost());
                     break;
 
                 //----------------- FOR TESTING & DEBUGGING
@@ -228,11 +235,13 @@ public class Menu
                     string yesOrNO = Console.ReadLine();
                     if (yesOrNO == "1")
                     {
-                        if (profile.Name.ToLower() == friendName.ToLower())
-                        {
-                            ChosenFriend = profile;
-                            return ChosenFriend;
-                        }
+                        ChosenFriend = profile;
+                        return ChosenFriend;
+                        //if (profile.Name.ToLower() == friendName.ToLower())
+                        //{
+                        //    ChosenFriend = profile;
+                        //    return ChosenFriend;
+                        //}
                     }
                     if (yesOrNO == "2")
                     {

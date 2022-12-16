@@ -8,6 +8,7 @@ public class TempData
     {
         AllUserNames = new List<string>();
 
+
         //AllUsers = new AddExampleUsers().Users;
         //AddAllUsersToTempDatabaseViaApi();
         //AddAllUserNames();
@@ -50,7 +51,7 @@ public class TempData
 
     public List<string> GetAllUserNames()
     {
-        //AddAllUserNames();
+        AddAllUserNames();
         return AllUserNames;
     }
 }

@@ -11,19 +11,42 @@ public class PostHandler
         FriendFace = friendFace;
     }
 
+    public string PromptForPost()
+    {
+        Console.WriteLine("Enter your post-text here: ");
+        string postText = Console.ReadLine();
+        return postText;
+    }
     public void CreatePost(Profile postCreator,string postText)
     {
         Post = new Post(postCreator, postText);
+        List<Post> posts = FriendFace.SocialPage.Posts;
 
-        foreach (var post in FriendFace.SocialPage.Posts)
+        Post postToRemove = null;
+        bool removeApost = false;
+        foreach (var post in posts)
         {
             if (post.PostCreator == Post.PostCreator)
             {
-                FriendFace.SocialPage.Posts.Remove(post);
+                postToRemove = post;
+                removeApost = true;
+
+                //FriendFace.SocialPage.Posts.Remove(post);
             }
         }
 
+        if (removeApost == true)
+        {
+            removePost(postToRemove);
+        }
+
+
         FriendFace.SocialPage.Posts.Add(Post);
+    }
+
+    public void removePost(Post post)
+    {
+        FriendFace.SocialPage.Posts.Remove(post);
     }
 
     public void DisplayPosts()
